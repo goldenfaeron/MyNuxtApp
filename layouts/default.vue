@@ -72,6 +72,11 @@ export default {
 					icon: "mdi-book-open-page-variant",
 					title: "Learn Nuxt & Vuetify",
 					to: "/learn"
+				},
+				{
+					icon: "mdi-image-edit-outline",
+					title: "Images test",
+					to: "/images"
 				}
 			],
 			miniVariant: false,
