@@ -2,6 +2,11 @@
 
 > My rad Nuxt.js project
 
+##Vuetify component library and documentation
+
+>https://v15.vuetifyjs.com/en/components/carousels
+
+
 ## Build Setup
 
 ``` bash
