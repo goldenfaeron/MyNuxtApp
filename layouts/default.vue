@@ -72,6 +72,11 @@ export default {
 					icon: "mdi-book-open-page-variant",
 					title: "Learn Nuxt & Vuetify",
 					to: "/learn"
+				},
+				{
+					icon: "mdi-calculator",
+					title: "Calculator",
+					to: "/calculator"
 				}
 			],
 			miniVariant: false,
