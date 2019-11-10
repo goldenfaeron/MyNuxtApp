@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
+
+
 export default {
   mode: 'universal',
   /*
@@ -41,7 +43,14 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+
+  axios: {
+    // proxyHeaders: false
+  },
+
+
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -70,7 +79,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }
