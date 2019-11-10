@@ -77,11 +77,6 @@ export default {
 					icon: "mdi-calculator",
 					title: "Calculator",
 					to: "/calculator"
-				},
-				{
-					icon: "mdi-hotel",
-					title: "Hotel",
-					to: "/hotel"
 				}
 			],
 			miniVariant: false,
