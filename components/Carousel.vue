@@ -8,7 +8,7 @@
 			>
 				<v-container v-if="item.title || item.caption" class="fill-height" fluid>
 					<v-layout align-end>
-						<v-flex xs8 offset-xs2>
+						<v-flex xs12>
 							<v-card style="background-color:rgba(0,0,0,0.5)">
 								<v-card-text>
 									<h3 class="headline">{{item.title}}</h3>

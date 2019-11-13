@@ -3,7 +3,7 @@
 		<Carousel :props="carouselContent"></Carousel>
 		<v-container grid-list-xs>
 			<v-layout column justify-center align-center>
-				<div class="display-4">Sam and Tobias Cool Website</div>
+				<div class="display-2 text-uppercase">Sam and Tobias Cool Website</div>
 				<br />
 				<div
 					class="display-1"
@@ -21,6 +21,7 @@
 				<br />
 				<div>{{lorum}}</div>
 			</v-layout>
+
 			<v-layout my-5 row wrap>
 				<Gallery :props="carouselContent"></Gallery>
 			</v-layout>
@@ -60,9 +61,6 @@ export default {
 					title: "Feet bathing in water",
 					caption:
 						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
-				},
-				{
-					src: "river.jpg"
 				}
 			]
 		};
