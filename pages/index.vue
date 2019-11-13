@@ -1,67 +1,67 @@
 <template>
-	<v-container grid-list-xs>
-		<v-layout column justify-center align-center>
-			<!-- Carousel  -->
-			<v-flex xs12 sm8 md6 my-5>
-				<v-carousel cycle>
-					<v-carousel-item :src="require('@/assets/camping.jpg')"></v-carousel-item>
-					<v-carousel-item :src="require('@/assets/bike.jpg')"></v-carousel-item>
-					<v-carousel-item :src="require('@/assets/mine.jpg')"></v-carousel-item>
-					<v-carousel-item :src="require('@/assets/river.jpg')"></v-carousel-item>
-				</v-carousel>
-			</v-flex>
+	<div>
+		<Carousel :props="content"></Carousel>
+		<v-container grid-list-xs>
+			<v-layout column justify-center align-center>
+				<!-- Carousel  -->
+				<v-flex xs12 sm8 md6 my-5>
+					<!-- Carousel Here -->
+				</v-flex>
 
-			<v-flex xs12 sm8 md6>
-				<div class="text-center">
-					<logo />
-					<vuetify-logo />
-				</div>
-				<v-card>
-					<v-card-title class="headline">Welcome to the Vuetify + Nuxt.js template (No Tobi did thissssssssss)</v-card-title>
-					<v-card-text>
-						<p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-						<p>
-							For more information on Vuetify, check out the
-							<a
-								href="https://vuetifyjs.com"
-								target="_blank"
-							>documentation</a>.
-						</p>
-						<p>
-							If you have questions, please join the official
-							<a
-								href="https://chat.vuetifyjs.com/"
-								target="_blank"
-								title="chat"
-							>discord</a>.
-						</p>
-						<p>
-							Find a bug? Report it on the github
-							<a
-								href="https://github.com/vuetifyjs/vuetify/issues"
-								target="_blank"
-								title="contribute"
-							>issue board</a>.
-						</p>
-						<p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-						<div class="text-xs-right">
-							<em>
-								<small>&mdash; John Leider</small>
-							</em>
-						</div>
-						<hr class="my-3" />
-						<a href="https://nuxtjs.org/" target="_blank">Nuxt Documentation</a>
-						<br />
-						<a href="https://github.com/nuxt/nuxt.js" target="_blank">Nuxt GitHub</a>
-					</v-card-text>
-					<v-card-actions>
-						<v-spacer />
-						<v-btn color="primary" nuxt to="/inspire">Continue</v-btn>
-					</v-card-actions>
-				</v-card>
-			</v-flex>
-		</v-layout>
-	</v-container>
+				<v-flex xs12 sm8 md6>
+					<div class="text-center">
+						<logo />
+						<vuetify-logo />
+					</div>
+					<v-card>
+						<v-card-title
+							class="headline"
+						>Welcome to the Vuetify + Nuxt.js template (No Tobi did thissssssssss)</v-card-title>
+						<v-card-text>
+							<p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
+							<p>
+								For more information on Vuetify, check out the
+								<a
+									href="https://vuetifyjs.com"
+									target="_blank"
+								>documentation</a>.
+							</p>
+							<p>
+								If you have questions, please join the official
+								<a
+									href="https://chat.vuetifyjs.com/"
+									target="_blank"
+									title="chat"
+								>discord</a>.
+							</p>
+							<p>
+								Find a bug? Report it on the github
+								<a
+									href="https://github.com/vuetifyjs/vuetify/issues"
+									target="_blank"
+									title="contribute"
+								>issue board</a>.
+							</p>
+							<p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
+							<div class="text-xs-right">
+								<em>
+									<small>&mdash; John Leider</small>
+								</em>
+							</div>
+							<hr class="my-3" />
+							<a href="https://nuxtjs.org/" target="_blank">Nuxt Documentation</a>
+							<br />
+							<a href="https://github.com/nuxt/nuxt.js" target="_blank">Nuxt GitHub</a>
+						</v-card-text>
+						<v-card-actions>
+							<v-spacer />
+							<v-btn color="primary" nuxt to="/inspire">Continue</v-btn>
+						</v-card-actions>
+					</v-card>
+				</v-flex>
+			</v-layout>
+		</v-container>
+	</div>
 </template>
 
 <script>
@@ -70,8 +70,33 @@ import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
 	components: {
+		Carousel: () => import("@/components/Carousel"),
 		Logo,
 		VuetifyLogo
+	},
+	data() {
+		return {
+			content: [
+				{
+					src: "bike.jpg",
+					title: "Nice bike",
+					caption:
+						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+				},
+				{
+					src: "camping.jpg",
+					title: "Camping is fun",
+					caption:
+						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+				},
+				{
+					src: "mine.jpg",
+					title: "Feet bathing in water",
+					caption:
+						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+				}
+			]
+		};
 	}
 };
 </script>

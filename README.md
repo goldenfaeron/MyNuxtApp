@@ -1,4 +1,4 @@
-# MyNuxtApp
+## MyNuxtApp
 
 > My rad Nuxt.js project
 
