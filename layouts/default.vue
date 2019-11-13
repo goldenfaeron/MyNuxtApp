@@ -75,6 +75,12 @@ export default {
 					icon: "mdi-apps",
 					title: "API testing",
 					to: "/api"
+				},
+
+				{
+					icon: "mdi-image",
+					title: "Image test",
+					to: "/image"
 				}
 			],
 			miniVariant: false,
