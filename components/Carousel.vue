@@ -6,7 +6,7 @@
 				:key="index"
 				:src="require('@/assets/'+item.src)"
 			>
-				<v-container class="fill-height" fluid>
+				<v-container v-if="item.title || item.caption" class="fill-height" fluid>
 					<v-layout align-end>
 						<v-flex xs8 offset-xs2>
 							<v-card style="background-color:rgba(0,0,0,0.5)">
