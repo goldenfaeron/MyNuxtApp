@@ -1,0 +1,18 @@
+<template>
+	<div>
+		<div>
+			<v-container>
+				<v-layout>
+					<v-flex>
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
+					</v-flex>
+				</v-layout>
+			</v-container>
+		</div>
+	</div>
+</template>

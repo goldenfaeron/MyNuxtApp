@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<div class="display-4">API testing</div>
 		<!-- <div class="display-2">Result:{{ip}}</div> -->
+		<div class="display-4">API testing</div>
 		<v-container grid-list-xs>
 			<v-layout row>
 				<v-flex xs12 my5 v-for="(item, index) in ip" :key="index">
