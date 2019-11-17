@@ -81,6 +81,11 @@ export default {
 					icon: "mdi-image",
 					title: "Image test",
 					to: "/image"
+				},
+				{
+					icon: "mdi-currency-eur",
+					title: "Products",
+					to: "/products"
 				}
 			],
 			miniVariant: false,

@@ -1,7 +1,6 @@
 <template>
 	<div>
 		<v-container>
-			{{clicked}}
 			<v-layout>
 				<v-flex xs10>
 					<v-img @click.stop="dialog = true" :src="require('@/assets/bike.jpg')"></v-img>

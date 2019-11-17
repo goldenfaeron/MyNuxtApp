@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Carousel :props="carouselContent"></Carousel>
+		<Carousel :content="carouselContent" cycle="true"></Carousel>
 		<v-container grid-list-xs>
 			<v-layout column justify-center align-center>
 				<div class="display-2 text-uppercase">Sam and Tobias Cool Website</div>
@@ -23,7 +23,7 @@
 			</v-layout>
 
 			<v-layout my-5 row wrap>
-				<Gallery :props="carouselContent"></Gallery>
+				<Gallery :props="galleryContent"></Gallery>
 			</v-layout>
 		</v-container>
 	</div>
@@ -37,7 +37,7 @@ export default {
 	components: {
 		Carousel: () => import("@/components/Carousel"),
 		Timeline: () => import("@/components/Timeline"),
-		Gallery: () => import("@/components/Gallery")
+		Gallery: () => import("@/components/gallery/Gallery")
 	},
 	data() {
 		return {
@@ -61,6 +61,27 @@ export default {
 					title: "Feet bathing in water",
 					caption:
 						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+				}
+			],
+
+			galleryContent: [
+				{
+					src: "tent.jpg",
+					title: "Camping is amazing!",
+					caption:
+						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
+				},
+				{
+					src: "river.jpg",
+					title: "I love rivers so much",
+					caption:
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper."
+				},
+				{
+					src: "roadtrip.jpg",
+					title: "Taking a roadtrip through morocco",
+					caption:
+						"Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
 				}
 			]
 		};

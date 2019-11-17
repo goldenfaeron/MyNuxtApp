@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<v-carousel cycle hide-controls hide-delimiters>
+		<v-carousel :cycle="cycle" hide-controls hide-delimiters>
 			<v-carousel-item
-				v-for="(item, index) in props"
+				v-for="(item, index) in content"
 				:key="index"
 				:src="require('@/assets/'+item.src)"
 			>
@@ -27,7 +27,10 @@
 
 <script>
 export default {
-	props: ["props"],
+	props: {
+		content: Array,
+		cycle: Boolean
+	},
 
 	data() {
 		return {
