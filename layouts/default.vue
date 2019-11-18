@@ -83,7 +83,7 @@ export default {
 					to: "/image"
 				},
 				{
-					icon: "mdi-currency-eur",
+					icon: "mdi-currency-usd",
 					title: "Products",
 					to: "/products"
 				}

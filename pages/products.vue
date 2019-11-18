@@ -4,7 +4,7 @@
 		<v-container grid-list-lg>
 			<div class="display-4">Nice Houses for sale</div>
 			<v-layout row space>
-				<v-flex xs4 my5 v-for="(item, index) in externalContent['entries']" :key="index">
+				<v-flex xs12 md4 my5 v-for="(item, index) in externalContent['entries']" :key="index">
 					<v-card>
 						<v-img aspect-ratio="1.7" max-height="300" :src="assetRoot + item.image.path"></v-img>
 						<v-card-title primary-title>
@@ -14,21 +14,19 @@
 								<div>{{item.description}}</div>
 								<br />
 								<div class="display-1">£{{item.price}}</div>
-								{{item.location.lat}}
-								{{item.location.lng}}
-								<div style="width: 100%">
-									<iframe
-										width="100%"
-										height="300"
-										src="https://maps.google.com/maps?&amp;hl=en&amp;coord=52.52554721167084,13.445776998996736&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
-										frameborder="0"
-										scrolling="no"
-										marginheight="0"
-										marginwidth="0"
-									>
-										<a href="https://www.maps.ie/coordinates.html">find my coordinates</a>
-									</iframe>
-								</div>
+
+								<iframe
+									width="100%"
+									height="300"
+									:src="'https://maps.google.com/maps?width=100%&amp;height=900&amp;hl=en&amp;q='+item.location.address+'()&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed'"
+									frameborder="0"
+									scrolling="no"
+									marginheight="0"
+									marginwidth="0"
+								>
+									<a href="https://www.maps.ie/map-my-route/"></a>
+								</iframe>
+
 								<br />
 								<br />
 							</div>
