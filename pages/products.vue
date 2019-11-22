@@ -3,14 +3,19 @@
 		<!-- <div class="display-2">Result:{{ip}}</div> -->
 		<v-container grid-list-lg>
 			<div class="display-4">Nice Houses for sale</div>
-				
+
 			<v-layout row space>
 				<v-flex xs12 md4 my5 v-for="(item, index) in externalContent['entries']" :key="index">
 					<v-card>
 						<v-img aspect-ratio="1.7" max-height="300" :src="assetRoot + item.image.path"></v-img>
+
 						<v-carousel height="300">
-							<v-carousel-item :src="assetRoot + item.image.path" ></v-carousel-item>
-							<v-carousel-item v-for="(galleryItem, index) in item.gallery" :key="index" :src="assetRoot + galleryItem.path"></v-carousel-item>
+							<v-carousel-item :src="assetRoot + item.image.path"></v-carousel-item>
+							<v-carousel-item
+								v-for="(galleryItem, index) in item.gallery"
+								:key="index"
+								:src="webRoot + galleryItem.path"
+							></v-carousel-item>
 						</v-carousel>
 						<v-card-title primary-title>
 							<div>
@@ -20,12 +25,24 @@
 								<br />
 								<div>{{item.description}}</div>
 								<br />
-								<p v-if="item.disabilityAccess"><v-icon>mdi-wheelchair-accessibility</v-icon> Disability Access</p>
-								<p v-else><v-icon>mdi-stairs</v-icon> No Disability Access</p>
-								<p v-if="item.internetConnection"><v-icon>mdi-wifi</v-icon> Internet Conection</p>
-								<p v-else><v-icon>mdi-wifi-off</v-icon> No Internet Conection</p>
-								<p v-if="item.schoolsNearby"><v-icon>mdi-school</v-icon> Schools Nearby</p>
-								<p v-else><v-icon>mdi-school-outline</v-icon> No Schools Nearby</p>
+								<p v-if="item.disabilityAccess">
+									<v-icon>mdi-wheelchair-accessibility</v-icon>Disability Access
+								</p>
+								<p v-else>
+									<v-icon>mdi-stairs</v-icon>No Disability Access
+								</p>
+								<p v-if="item.internetConnection">
+									<v-icon>mdi-wifi</v-icon>Internet Conection
+								</p>
+								<p v-else>
+									<v-icon>mdi-wifi-off</v-icon>No Internet Conection
+								</p>
+								<p v-if="item.schoolsNearby">
+									<v-icon>mdi-school</v-icon>Schools Nearby
+								</p>
+								<p v-else>
+									<v-icon>mdi-school-outline</v-icon>No Schools Nearby
+								</p>
 								<br />
 								<div class="display-1">£{{item.price}}</div>
 
@@ -73,7 +90,8 @@ export default {
 
 	data() {
 		return {
-			assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads"
+			assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads",
+			webRoot: "https://cockpit.hackmylanguage.com"
 		};
 	},
 	head() {
