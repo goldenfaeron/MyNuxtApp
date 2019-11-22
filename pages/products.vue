@@ -7,10 +7,9 @@
 			<v-layout row space>
 				<v-flex xs12 md4 my5 v-for="(item, index) in externalContent['entries']" :key="index">
 					<v-card>
-						<v-img aspect-ratio="1.7" max-height="300" :src="assetRoot + item.image.path"></v-img>
-						<v-carousel height="300">
+						<v-carousel height="300" cycle>
 							<v-carousel-item :src="assetRoot + item.image.path" ></v-carousel-item>
-							<v-carousel-item v-for="(galleryItem, index) in item.gallery" :key="index" :src="assetRoot + galleryItem.path"></v-carousel-item>
+							<v-carousel-item v-for="(galleryItem, index) in item.gallery" :key="index" :src="webRoot + galleryItem.path"></v-carousel-item>
 						</v-carousel>
 						<v-card-title primary-title>
 							<div>
@@ -73,7 +72,8 @@ export default {
 
 	data() {
 		return {
-			assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads"
+			assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads",
+			webRoot: "https://cockpit.hackmylanguage.com"
 		};
 	},
 	head() {
