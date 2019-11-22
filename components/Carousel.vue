@@ -1,14 +1,14 @@
 <template>
 	<div>
-		<v-carousel cycle hide-controls hide-delimiters>
+		<v-carousel :cycle="cycle" hide-controls hide-delimiters>
 			<v-carousel-item
-				v-for="(item, index) in props"
+				v-for="(item, index) in content"
 				:key="index"
 				:src="require('@/assets/'+item.src)"
 			>
-				<v-container class="fill-height" fluid>
+				<v-container v-if="item.title || item.caption" class="fill-height" fluid>
 					<v-layout align-end>
-						<v-flex xs8 offset-xs2>
+						<v-flex xs12>
 							<v-card style="background-color:rgba(0,0,0,0.5)">
 								<v-card-text>
 									<h3 class="headline">{{item.title}}</h3>
@@ -27,7 +27,10 @@
 
 <script>
 export default {
-	props: ["props"],
+	props: {
+		content: Array,
+		cycle: Boolean
+	},
 
 	data() {
 		return {

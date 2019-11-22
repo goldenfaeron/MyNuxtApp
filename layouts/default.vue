@@ -75,6 +75,17 @@ export default {
 					icon: "mdi-apps",
 					title: "API testing",
 					to: "/api"
+				},
+
+				{
+					icon: "mdi-image",
+					title: "Image test",
+					to: "/image"
+				},
+				{
+					icon: "mdi-currency-usd",
+					title: "Products",
+					to: "/products"
 				}
 			],
 			miniVariant: false,
