@@ -4,7 +4,7 @@
 			<div class="display-4">Nice Artworks for sale</div>
 			<v-layout row space>
 				<v-flex xs12 md4 my5 v-for="(item, index) in externalContent['entries']" :key="index">
-						<v-card>
+						<v-card :color="item.color">      
                     	<v-card-title primary-title>
 							<div>
 								<h3 class="headline mb-0">{{item.title}}</h3>
