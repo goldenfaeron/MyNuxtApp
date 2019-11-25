@@ -86,6 +86,11 @@ export default {
 					icon: "mdi-currency-usd",
 					title: "Products",
 					to: "/products"
+				},
+				{
+					icon: "mdi-camera",
+					title: "Photo Shop",
+					to: "/photoshop"
 				}
 			],
 			miniVariant: false,
