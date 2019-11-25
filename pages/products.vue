@@ -3,7 +3,6 @@
 		<!-- <div class="display-2">Result:{{ip}}</div> -->
 		<v-container grid-list-lg>
 			<div class="display-4">Nice Houses for sale</div>
-				
 			<v-layout row space>
 				<v-flex xs12 md4 my5 v-for="(item, index) in externalContent['entries']" :key="index">
 					<v-card>
