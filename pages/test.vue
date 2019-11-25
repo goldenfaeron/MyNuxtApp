@@ -1,18 +1,21 @@
 <template>
-	<div>
-		<div>
-			<v-container>
-				<v-layout>
-					<v-flex>
-						<p></p>
-						<p></p>
-						<p></p>
-						<p></p>
-						<p></p>
-						<p></p>
-					</v-flex>
-				</v-layout>
-			</v-container>
-		</div>
-	</div>
+  <div>
+    <span
+      @mouseover="hover = true"
+      @mouseleave="hover = false"
+    >
+      Hover me to show the message!
+    </span>
+    <span v-if="hover">This is a secret message.</span>
+  </div>
 </template>
+
+<script>
+export default {
+	  data() {
+    return {
+      hover: false,
+    };
+  }
+}
+</script>
