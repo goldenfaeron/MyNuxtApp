@@ -11,16 +11,17 @@
                                 <br>
                                 <p>Rating: <v-icon v-for="(rating, index) in item.rating" :key="index">mdi-star</v-icon><v-icon v-for="(nonrating, index) in 5-item.rating" :key="index">mdi-star-outline</v-icon></p>
 							</div>
-						</v-card-title>
-  
+						</v-card-title>                      
                     <v-img aspect-ratio="1" max-height="500" :src="webRoot + item.image.path"></v-img>
+                    <v-card-actions>
+						<v-btn color="white" text>Buy</v-btn>
+					</v-card-actions>
 					</v-card>
 				</v-flex>
 			</v-layout>
 		</v-container>
 	</div>
 </template>
-
 <script>
 export default {
 	async asyncData({ $axios }) {
@@ -53,6 +54,6 @@ export default {
 				}
 			]
 		};
-	}
+    }
 };
 </script>
