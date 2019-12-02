@@ -49,9 +49,9 @@
 
 <script>
 export default {
-	components: {
-		Footer: () => import("@/components/Footer"),
-	},
+components: {
+Footer: () => import("@/components/Footer"),
+},
 	data() {
 		return {
 			clipped: false,
