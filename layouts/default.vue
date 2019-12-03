@@ -36,10 +36,23 @@
 			<v-list>
 				<v-list-item @click.native="right = !right">
 					<v-list-item-action>
-						<v-icon light>mdi-repeat</v-icon>
+						<v-icon light>mdi-cart</v-icon>
 					</v-list-item-action>
-					<v-list-item-title>Switch drawer (click me)</v-list-item-title>
+					<v-list-item-title>Shopping cart</v-list-item-title>
 				</v-list-item>
+				<v-layout column space>
+				<v-flex xs12 md4 my5 v-for="(item, index) in $store.state.cart" :key="index">
+					<v-card :color="item.color">
+						<v-card-title primary-title>
+							<div>
+								<h3 class="headline mb-0">{{item.title}}</h3>
+								<br />
+							</div>
+						</v-card-title>
+						<v-img aspect-ratio="1" max-height="500" :src="webRoot + item.image.path"></v-img>
+					</v-card>
+				</v-flex>
+				</v-layout>
 			</v-list>
 		</v-navigation-drawer>
 		<v-footer :fixed="fixed" app>
@@ -52,6 +65,8 @@
 export default {
 	data() {
 		return {
+			assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads",
+			webRoot: "https://cockpit.hackmylanguage.com",
 			clipped: false,
 			drawer: false,
 			fixed: false,

@@ -1,7 +1,8 @@
 import axios from "axios"
 export const state = () => ({
     name: "My name is john",
-    cart: [''],
+    cart: [],
+    test: "hello world"
 })
 
 
