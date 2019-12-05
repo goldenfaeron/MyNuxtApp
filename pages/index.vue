@@ -3,11 +3,9 @@
 		<Carousel :content="carouselContent" cycle="true"></Carousel>
 		<v-container grid-list-xs>
 			<v-layout column justify-center align-center>
-				<div class="display-2 text-uppercase">Sam and Tobias Cool Website</div>
+				<div class="display-2 text-uppercase">{{$store.state.site.name}}</div>
 				<br />
-				<div
-					class="display-1"
-				>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula porta felis euismod semper.</div>
+				<div class="display-1">{{$store.state.site.description}}</div>
 				<br />
 				<div class="body-2">{{lorum}}</div>
 				<div>{{lorum}}</div>
@@ -29,9 +27,9 @@
 	</div>
 </template>
 
+
 <script>
 import Logo from "~/components/Logo.vue";
-import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
 	components: {
