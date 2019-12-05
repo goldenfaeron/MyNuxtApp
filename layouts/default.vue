@@ -1,5 +1,6 @@
 <template>
 	<v-app>
+		<!-- LEFT DRAWER  -->
 		<v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
 			<v-list>
 				<v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
@@ -12,26 +13,33 @@
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
-		<v-app-bar :clipped-left="clipped" fixed app>
+
+		<!-- NAVBAR  -->
+		<v-app-bar color="primary" class="white--text" :clipped-left="clipped" fixed app>
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-			<v-btn icon @click.stop="miniVariant = !miniVariant">
-				<v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-			</v-btn>
-			<v-btn icon @click.stop="clipped = !clipped">
-				<v-icon>mdi-application</v-icon>
-			</v-btn>
-			<v-btn icon @click.stop="fixed = !fixed">
-				<v-icon>mdi-minus</v-icon>
-			</v-btn>
-			<v-toolbar-title v-text="title" />
+
+			<!-- <span style="cursor:pointer; max-width:40px" @click="go('/')">
+				<v-img :src="require('@/static/favicon2.ico')" contain width="30px" height="30px"></v-img>
+			</span>-->
+
+			<v-toolbar-title
+				style="cursor:pointer;"
+				@click="go('/')"
+				class="toolbar-title title-cursive"
+				v-text="$store.state.site.name"
+			/>
 			<v-spacer />
 			<v-btn icon @click.stop="rightDrawer = !rightDrawer">
 				<v-icon>mdi-menu</v-icon>
 			</v-btn>
 		</v-app-bar>
+
+		<!-- SITE CONTENT -->
 		<v-content>
 			<nuxt />
 		</v-content>
+
+		<!-- RIGHT DRAWER  -->
 		<v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
 			<v-list>
 				<v-list-item @click.native="right = !right">
@@ -42,6 +50,8 @@
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
+
+		<!-- FOOTER  -->
 		<v-footer :fixed="fixed" app>
 			<span>&copy; 2019</span>
 		</v-footer>
@@ -63,8 +73,8 @@ export default {
 				},
 				{
 					icon: "mdi-chart-bubble",
-					title: "Inspire",
-					to: "/inspire"
+					title: "Developers",
+					to: "/developers"
 				},
 				{
 					icon: "mdi-book-open-page-variant",
@@ -95,9 +105,22 @@ export default {
 			],
 			miniVariant: false,
 			right: true,
-			rightDrawer: false,
-			title: "Vuetify.js"
+			rightDrawer: false
 		};
+	},
+	methods: {
+		go(route) {
+			this.$router.push(route);
+		},
+		goBack() {
+			this.$router.back();
+		}
 	}
 };
 </script>
+
+<style lang="css">
+v-navigation-drawer {
+	color: red;
+}
+</style>
