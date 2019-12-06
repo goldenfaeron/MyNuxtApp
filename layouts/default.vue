@@ -1,5 +1,6 @@
 <template>
 	<v-app>
+		<!-- LEFT DRAWER  -->
 		<v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
 			<v-list>
 				<v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
@@ -12,60 +13,62 @@
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
-		<v-app-bar :clipped-left="clipped" fixed app>
+
+		<!-- NAVBAR  -->
+		<v-app-bar class="primary white--text" :clipped-left="clipped" fixed app>
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-			<v-btn icon @click.stop="miniVariant = !miniVariant">
-				<v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-			</v-btn>
-			<v-btn icon @click.stop="clipped = !clipped">
-				<v-icon>mdi-application</v-icon>
-			</v-btn>
-			<v-btn icon @click.stop="fixed = !fixed">
-				<v-icon>mdi-minus</v-icon>
-			</v-btn>
-			<v-toolbar-title v-text="title" />
+
+			<!-- <span style="cursor:pointer; max-width:40px" @click="go('/')">
+				<v-img :src="require('@/static/favicon2.ico')" contain width="30px" height="30px"></v-img>
+			</span>-->
+
+			<v-toolbar-title
+				style="cursor:pointer;"
+				@click="go('/')"
+				class="toolbar-title title-cursive"
+				v-text="$store.state.site.name"
+			/>
 			<v-spacer />
 			<v-btn icon @click.stop="rightDrawer = !rightDrawer">
 				<v-icon>mdi-menu</v-icon>
 			</v-btn>
 		</v-app-bar>
+
+		<!-- SITE CONTENT -->
 		<v-content>
 			<nuxt />
 		</v-content>
-		<v-navigation-drawer v-model="rightDrawer" right temporary fixed>
+
+		<!-- GO UP BUTTON  -->
+		<v-btn
+			@click="top()"
+			v-scroll="onScroll"
+			v-show="scrollButton"
+			mb-5
+			color="pink"
+			large
+			small
+			fixed
+			bottom
+			right
+			fab
+		>
+			<v-icon>mdi-plus</v-icon>
+		</v-btn>
+
+		<!-- RIGHT DRAWER  -->
+		<v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
 			<v-list>
 				<v-list-item @click.native="right = !right">
-				    <v-badge overlap>
-      					<template v-slot:badge>
-        					<span>{{$store.state.cart.length}}</span>
-      					</template>	
-						
 					<v-list-item-action>
-							<v-btn icon>
-							<v-icon class="mdi-dark mdi-36px">mdi-cart</v-icon>
-						</v-btn>
+						<v-icon light>mdi-repeat</v-icon>
 					</v-list-item-action>
-						
-				    </v-badge>
-					<v-list-item-title>Shopping cart</v-list-item-title>
+					<v-list-item-title>Switch drawer (click me)</v-list-item-title>
 				</v-list-item>
-				<v-layout column space>
-				<v-flex xs12 md4 my5 v-for="(item, index) in $store.state.cart" :key="index">
-					<v-card :color="item.color">
-						<v-card-title primary-title>
-							<div>
-								<h3 class="headline mb-0">{{item.title}}</h3>
-							</div>
-						</v-card-title>
-						<v-img aspect-ratio="1" max-height="500" :src="webRoot + item.image.path"></v-img>
-						<v-card-actions>
-						<!--<v-btn color="white" @click="deleteFromCart(item)" text>Delete</v-btn>-->
-						</v-card-actions>
-					</v-card>
-				</v-flex>
-				</v-layout>
 			</v-list>
 		</v-navigation-drawer>
+
+		<!-- FOOTER  -->
 		<v-footer :fixed="fixed" app>
 			<span>&copy; 2019</span>
 		</v-footer>
@@ -76,8 +79,7 @@
 export default {
 	data() {
 		return {
-			assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads",
-			webRoot: "https://cockpit.hackmylanguage.com",
+			scrollButton: false,
 			clipped: false,
 			drawer: false,
 			fixed: false,
@@ -89,8 +91,8 @@ export default {
 				},
 				{
 					icon: "mdi-chart-bubble",
-					title: "Inspire",
-					to: "/inspire"
+					title: "Developers",
+					to: "/developers"
 				},
 				{
 					icon: "mdi-book-open-page-variant",
@@ -112,18 +114,39 @@ export default {
 					icon: "mdi-currency-usd",
 					title: "Products",
 					to: "/products"
-				},
-				{
-					icon: "mdi-camera",
-					title: "Photo Shop",
-					to: "/photoshop"
 				}
 			],
 			miniVariant: false,
 			right: true,
-			rightDrawer: false,
-			title: "Vuetify.js"
+			rightDrawer: false
 		};
+	},
+	methods: {
+		go(route) {
+			this.$router.push(route);
+		},
+		goBack() {
+			this.$router.back();
+		},
+		top() {
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: "smooth"
+			});
+		},
+
+		onScroll(e) {
+			if (typeof window === "undefined") return;
+			const top = window.pageYOffset || e.target.scrollTop || 0;
+			this.fab = top > 20;
+		}
 	}
 };
 </script>
+
+<style lang="css">
+v-navigation-drawer {
+	color: red;
+}
+</style>
