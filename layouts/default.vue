@@ -15,7 +15,7 @@
 		</v-navigation-drawer>
 
 		<!-- NAVBAR  -->
-		<v-app-bar color="primary" class="white--text" :clipped-left="clipped" fixed app>
+		<v-app-bar class="primary white--text" :clipped-left="clipped" fixed app>
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
 			<!-- <span style="cursor:pointer; max-width:40px" @click="go('/')">
@@ -38,6 +38,23 @@
 		<v-content>
 			<nuxt />
 		</v-content>
+
+		<!-- GO UP BUTTON  -->
+		<v-btn
+			@click="top()"
+			v-scroll="onScroll"
+			v-show="scrollButton"
+			mb-5
+			color="pink"
+			large
+			small
+			fixed
+			bottom
+			right
+			fab
+		>
+			<v-icon>mdi-plus</v-icon>
+		</v-btn>
 
 		<!-- RIGHT DRAWER  -->
 		<v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
@@ -62,6 +79,7 @@
 export default {
 	data() {
 		return {
+			scrollButton: false,
 			clipped: false,
 			drawer: false,
 			fixed: false,
@@ -96,11 +114,6 @@ export default {
 					icon: "mdi-currency-usd",
 					title: "Products",
 					to: "/products"
-				},
-				{
-					icon: "mdi-camera",
-					title: "Photo Shop",
-					to: "/photoshop"
 				}
 			],
 			miniVariant: false,
@@ -114,6 +127,19 @@ export default {
 		},
 		goBack() {
 			this.$router.back();
+		},
+		top() {
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: "smooth"
+			});
+		},
+
+		onScroll(e) {
+			if (typeof window === "undefined") return;
+			const top = window.pageYOffset || e.target.scrollTop || 0;
+			this.fab = top > 20;
 		}
 	}
 };
