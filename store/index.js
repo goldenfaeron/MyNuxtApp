@@ -9,6 +9,5 @@ export const state = () => ({
 export const mutations = {
 
     addToCart: (state, payload) => (state.cart.push(payload)),
-   /*deleteFromCart: (state, payload) => (state.cart.splice(payload)),*/
     
 }

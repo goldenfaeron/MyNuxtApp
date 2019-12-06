@@ -35,19 +35,18 @@
 		<v-navigation-drawer v-model="rightDrawer" right temporary fixed>
 			<v-list>
 				<v-list-item @click.native="right = !right">
-				    <v-badge overlap>
+				    <v-badge>
       					<template v-slot:badge>
         					<span>{{$store.state.cart.length}}</span>
       					</template>	
-						
-					<v-list-item-action>
+					
 							<v-btn icon>
 							<v-icon class="mdi-dark mdi-36px">mdi-cart</v-icon>
 						</v-btn>
-					</v-list-item-action>
 						
 				    </v-badge>
-					<v-list-item-title>Shopping cart</v-list-item-title>
+
+					<v-list-item-title style="margin-left:30px;">Shopping cart</v-list-item-title>
 				</v-list-item>
 				<v-layout column space>
 				<v-flex xs12 md4 my5 v-for="(item, index) in $store.state.cart" :key="index">
