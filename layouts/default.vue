@@ -32,12 +32,21 @@
 		<v-content>
 			<nuxt />
 		</v-content>
-		<v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
+		<v-navigation-drawer v-model="rightDrawer" right temporary fixed>
 			<v-list>
 				<v-list-item @click.native="right = !right">
+				    <v-badge overlap>
+      					<template v-slot:badge>
+        					<span>{{$store.state.cart.length}}</span>
+      					</template>	
+						
 					<v-list-item-action>
-						<v-icon light>mdi-cart</v-icon>
+							<v-btn icon>
+							<v-icon class="mdi-dark mdi-36px">mdi-cart</v-icon>
+						</v-btn>
 					</v-list-item-action>
+						
+				    </v-badge>
 					<v-list-item-title>Shopping cart</v-list-item-title>
 				</v-list-item>
 				<v-layout column space>
@@ -46,10 +55,12 @@
 						<v-card-title primary-title>
 							<div>
 								<h3 class="headline mb-0">{{item.title}}</h3>
-								<br />
 							</div>
 						</v-card-title>
 						<v-img aspect-ratio="1" max-height="500" :src="webRoot + item.image.path"></v-img>
+						<v-card-actions>
+						<!--<v-btn color="white" @click="deleteFromCart(item)" text>Delete</v-btn>-->
+						</v-card-actions>
 					</v-card>
 				</v-flex>
 				</v-layout>

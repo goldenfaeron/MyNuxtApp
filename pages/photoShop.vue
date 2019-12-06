@@ -1,6 +1,5 @@
 <template>
 	<div>
-		{{$store.state.cart}}
 		<v-container grid-list-lg>
 			<div class="display-4">Nice Artworks for sale</div>
 			<v-layout row space>
