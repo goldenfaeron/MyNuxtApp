@@ -1,25 +1,5 @@
 <template>
 	<div>
-		<v-img :src="require('@/assets/bupa/chair.jpg')">
-			<v-container>
-				<v-layout align-end>
-					<v-flex xs12>
-						<v-card style="background-color:rgba(0,0,0,0.5)">
-							<v-card-text>
-								<h3 class="headline">Bupa Penzance</h3>
-								<div>
-									<div>
-										NHS Private
-										High St, Penzance, TR18 2SX View on map
-										Today - 8:30am to 7:00pm See all opening hoursCurrently accepting new private patients and dentist referrals
-									</div>
-								</div>
-							</v-card-text>
-						</v-card>
-					</v-flex>
-				</v-layout>
-			</v-container>
-		</v-img>
 		<v-toolbar dark color="secondary">
 			<!-- Show larger sizes -->
 			<v-layout wrap hidden-sm-and-down>
@@ -55,16 +35,18 @@
 				</v-layout>
 			</v-toolbar-items>
 		</v-toolbar>
+		<HeaderImage></HeaderImage>
+		<Mission></Mission>
 
 		<v-container grid-list-xs>
-			<v-layout column justify-center align-center>
+			<v-divider></v-divider>
+			<v-layout my-5 column justify-center align-center>
 				<About></About>
 			</v-layout>
-
-			<v-layout my-5 row wrap>
-				<Gallery :props="galleryContent"></Gallery>
-			</v-layout>
 		</v-container>
+
+		<Assurance></Assurance>
+		<v-img :src="require('@/assets/bupa/map.png')"></v-img>
 	</div>
 </template>
 
@@ -75,9 +57,12 @@ import Logo from "~/components/Logo.vue";
 export default {
 	components: {
 		About: () => import("@/components/About"),
+		Assurance: () => import("@/components/Assurance"),
 		Carousel: () => import("@/components/Carousel"),
-		Timeline: () => import("@/components/Timeline"),
-		Gallery: () => import("@/components/gallery/Gallery")
+		Gallery: () => import("@/components/gallery/Gallery"),
+		HeaderImage: () => import("@/components/HeaderImage"),
+		Mission: () => import("@/components/Mission"),
+		Timeline: () => import("@/components/Timeline")
 	},
 	data() {
 		return {
