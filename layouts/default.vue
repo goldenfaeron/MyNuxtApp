@@ -3,7 +3,7 @@
 		<!-- LEFT DRAWER  -->
 		<v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
 			<v-list>
-				<v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+				<v-list-item v-for="(item, i) in navigation" :key="i" :to="item.to" router exact>
 					<v-list-item-action>
 						<v-icon>{{ item.icon }}</v-icon>
 					</v-list-item-action>
@@ -18,10 +18,6 @@
 		<v-app-bar class="primary white--text" :clipped-left="clipped" fixed app>
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-			<!-- <span style="cursor:pointer; max-width:40px" @click="go('/')">
-				<v-img :src="require('@/static/favicon2.ico')" contain width="30px" height="30px"></v-img>
-			</span>-->
-
 			<v-toolbar-title
 				style="cursor:pointer;"
 				@click="go('/')"
@@ -34,27 +30,32 @@
 			</v-btn>
 		</v-app-bar>
 
-		<!-- SITE CONTENT -->
 		<v-content>
+			<!-- navigation -->
+			<v-toolbar dark color="white">
+				<v-container grid-list-xs>
+					<v-layout row>
+						<v-flex xs2 sm1>
+							<v-img max-height height="50" width="50" :src="require('@/assets/bupa/logo.png')"></v-img>
+						</v-flex>
+						<v-flex xs2 sm1 v-for="(item, i) in navigation" :key="i">
+							<nuxt-link :to="item.to">{{item.title}}</nuxt-link>
+						</v-flex>
+					</v-layout>
+				</v-container>
+			</v-toolbar>
+
+			<!-- Site Content -->
 			<nuxt />
+
+			<!-- Footer -->
+			<v-footer>
+				<span>&copy; 2019</span>
+			</v-footer>
 		</v-content>
 
 		<!-- GO UP BUTTON  -->
-		<v-btn
-			@click="top()"
-			v-scroll="onScroll"
-			v-show="scrollButton"
-			mb-5
-			color="pink"
-			large
-			small
-			fixed
-			bottom
-			right
-			fab
-		>
-			<v-icon>mdi-plus</v-icon>
-		</v-btn>
+		<ScrollUpButton></ScrollUpButton>
 
 		<!-- RIGHT DRAWER  -->
 		<v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
@@ -69,21 +70,21 @@
 		</v-navigation-drawer>
 
 		<!-- FOOTER  -->
-		<v-footer :fixed="fixed" app>
-			<span>&copy; 2019</span>
-		</v-footer>
 	</v-app>
 </template>
 
 <script>
 export default {
+	components: {
+		ScrollUpButton: () => import("@/components/core/ScrollUpButton")
+	},
+
 	data() {
 		return {
-			scrollButton: false,
 			clipped: false,
 			drawer: false,
 			fixed: false,
-			items: [
+			navigation: [
 				{
 					icon: "mdi-apps",
 					title: "Welcome",
@@ -91,29 +92,29 @@ export default {
 				},
 				{
 					icon: "mdi-chart-bubble",
-					title: "Developers",
-					to: "/developers"
+					title: "Health",
+					to: "/health"
 				},
 				{
 					icon: "mdi-book-open-page-variant",
-					title: "Learn Nuxt & Vuetify",
-					to: "/learn"
+					title: "Dental",
+					to: "/dental"
 				},
 				{
 					icon: "mdi-apps",
-					title: "API testing",
-					to: "/api"
+					title: "Care Homes",
+					to: "/care-homes"
 				},
 
 				{
 					icon: "mdi-image",
-					title: "Image test",
-					to: "/image"
+					title: "Travel",
+					to: "/travel"
 				},
 				{
 					icon: "mdi-currency-usd",
-					title: "Products",
-					to: "/products"
+					title: "Health Information",
+					to: "/health-information"
 				}
 			],
 			miniVariant: false,
@@ -127,19 +128,6 @@ export default {
 		},
 		goBack() {
 			this.$router.back();
-		},
-		top() {
-			window.scrollTo({
-				top: 0,
-				left: 0,
-				behavior: "smooth"
-			});
-		},
-
-		onScroll(e) {
-			if (typeof window === "undefined") return;
-			const top = window.pageYOffset || e.target.scrollTop || 0;
-			this.fab = top > 20;
 		}
 	}
 };

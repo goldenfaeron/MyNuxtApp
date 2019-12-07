@@ -20,26 +20,45 @@
 				</v-layout>
 			</v-container>
 		</v-img>
-		<v-toolbar dark color="primary" extended>
+		<v-toolbar dark color="secondary">
+			<!-- Show larger sizes -->
+			<v-layout wrap hidden-sm-and-down>
+				<v-btn
+					x-large
+					color="secondary"
+					depressed
+					flat
+					tile
+					v-for="(item, index) in 5"
+					:key="index"
+				>Button {{index}}</v-btn>
+			</v-layout>
+			<!-- Show small -->
+			<v-layout wrap hidden-md-and-up hidden-xs-only>
+				<v-btn
+					color="secondary"
+					depressed
+					flat
+					tile
+					v-for="(item, index) in 5"
+					:key="index"
+				>Button {{index}}</v-btn>
+			</v-layout>
+
 			<v-toolbar-items>
-				<v-btn color="primary" flat v-for="(item, index) in 5" :key="index">Button {{index}}</v-btn>
+				<v-layout hidden-sm-and-up>
+					<v-flex>
+						<v-btn icon>
+							<v-icon>mdi-menu</v-icon>
+						</v-btn>MENU
+					</v-flex>
+				</v-layout>
 			</v-toolbar-items>
 		</v-toolbar>
+
 		<v-container grid-list-xs>
 			<v-layout column justify-center align-center>
-				<div>
-					Bupa Dental Care Penzance is on the High Street in the centre of the Cornish town of Penzance, just a five-minute walk from the beach. In our modern practice, we offer NHS and private dental services, and emergency appointments. We’re accepting new private patients to register, as well as referrals from other dentists for implants.
-					Our location is not only convenient for our patients but for efficiency, as we can offer a quick turnaround on any lab work since we use a local provider on the next street.
-					Our team of dentists are experienced practitioners and include an implant dentist. They’re all supported by a large team of friendly nurses.
-					Dental treatments
-					At Bupa Dental Care Penzance, we offer a range of general dental services, such as check-ups, fillings and hygiene appointments. We also offer a range of cosmetic dentistry services. We place veneers and are experienced in fitting dental implants. And we offer teeth whitening solutions, including whitening kits such as Philips ZOOM!
-					Hours to suit you
-					We know our patients lead busy lives, so we offer extended opening hours. We stay open until 7pm on three evenings a week. And if you have an urgent dental problem, we can offer you an emergency appointment. Just give us a call to see when we can help you.
-					Accessibility
-					Bupa Dental Care Penzance is wheelchair friendly.
-					How to find Bupa Dental Care Penzance
-					We’re on the High Street in Penzance, less than a 10-minute walk from Penzance Train Station and a five-minute walk to the beach.
-				</div>
+				<About></About>
 			</v-layout>
 
 			<v-layout my-5 row wrap>
@@ -55,6 +74,7 @@ import Logo from "~/components/Logo.vue";
 
 export default {
 	components: {
+		About: () => import("@/components/About"),
 		Carousel: () => import("@/components/Carousel"),
 		Timeline: () => import("@/components/Timeline"),
 		Gallery: () => import("@/components/gallery/Gallery")
