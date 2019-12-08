@@ -44,15 +44,14 @@
 				<About></About>
 			</v-layout>
 		</v-container>
-		<v-container grid-list-xs>
-			<v-layout>
-				<FAQ></FAQ>
-			</v-layout>
-		</v-container>
 
 		<Assurance></Assurance>
 		<v-img :src="require('@/assets/bupa/map.png')"></v-img>
 		<Prices></Prices>
+		<v-container grid-list-xs>
+			<FAQ></FAQ>
+		</v-container>
+		<NavigationList></NavigationList>
 	</div>
 </template>
 
@@ -69,6 +68,7 @@ export default {
 		Gallery: () => import("@/components/gallery/Gallery"),
 		HeaderImage: () => import("@/components/HeaderImage"),
 		Mission: () => import("@/components/Mission"),
+		NavigationList: () => import("@/components/NavigationList"),
 		Prices: () => import("@/components/Prices"),
 		Timeline: () => import("@/components/Timeline")
 	},
