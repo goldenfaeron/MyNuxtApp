@@ -134,7 +134,4 @@ export default {
 </script>
 
 <style lang="css">
-v-navigation-drawer {
-	color: red;
-}
 </style>

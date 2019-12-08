@@ -45,7 +45,4 @@
 </template>
 
 <style lang="css">
-.headline {
-	text-align: center;
-}
 </style>
