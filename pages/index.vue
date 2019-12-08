@@ -47,11 +47,29 @@
 
 		<Assurance></Assurance>
 		<v-img :src="require('@/assets/bupa/map.png')"></v-img>
-		<Prices></Prices>
-		<v-container grid-list-xs>
-			<FAQ></FAQ>
+
+		<!-- PRICES -->
+		<v-container>
+			<Prices></Prices>
+		</v-container>
+
+		<!-- ACCREDITATION AND FAQ -->
+		<v-container grid-list-lg>
+			<v-layout row my-5>
+				<v-flex xs12 sm5 md8>
+					<Accreditation></Accreditation>
+				</v-flex>
+				<v-flex xs12 sm5 md4>
+					<FAQ></FAQ>
+				</v-flex>
+			</v-layout>
 		</v-container>
 		<NavigationList></NavigationList>
+
+		<!-- Feedback -->
+		<v-container>
+			<Feedback></Feedback>
+		</v-container>
 	</div>
 </template>
 
@@ -62,9 +80,11 @@ import Logo from "~/components/Logo.vue";
 export default {
 	components: {
 		About: () => import("@/components/About"),
+		Accreditation: () => import("@/components/Accreditation"),
 		Assurance: () => import("@/components/Assurance"),
 		Carousel: () => import("@/components/Carousel"),
 		FAQ: () => import("@/components/FAQ"),
+		Feedback: () => import("@/components/Feedback"),
 		Gallery: () => import("@/components/gallery/Gallery"),
 		HeaderImage: () => import("@/components/HeaderImage"),
 		Mission: () => import("@/components/Mission"),
