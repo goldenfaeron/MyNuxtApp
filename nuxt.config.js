@@ -68,7 +68,7 @@ export default {
           info: '#D8D6D8',
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: '#94c8ed' //Cornflower Blue 
+          success: '#4CAF50' //#94c8ed
 
         }
 
