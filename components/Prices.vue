@@ -1,52 +1,50 @@
 <template>
 	<div>
-		<v-container>
-			<v-layout align-center justify-center>
-				<v-flex>
-					<div xs3 class="content-1">Prices</div>
-				</v-flex>
-			</v-layout>
+		<v-layout align-center justify-center>
+			<v-flex>
+				<div xs3 class="content-1">Prices</div>
+			</v-flex>
+		</v-layout>
 
-			<v-data-table
-				v-model="selected"
-				:headers="headers"
-				:items="desserts"
-				:pagination.sync="pagination"
-				item-key="name"
-				class="elevation-1"
-				hide-default-footer
-			>
-				<template v-slot:headers="props">
-					<tr>
-						<th>
-							<v-checkbox
-								:input-value="props.all"
-								:indeterminate="props.indeterminate"
-								primary
-								hide-details
-								@click.stop="toggleAll"
-							></v-checkbox>
-						</th>
-						<th
-							v-for="header in props.headers"
-							:key="header.text"
-							:class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
-							@click="changeSort(header.value)"
-						>
-							<v-icon small>arrow_upward</v-icon>
-							{{ header.text }}
-						</th>
-					</tr>
-				</template>
-				<template v-slot:items="props">
-					<tr :active="props.selected" @click="props.selected = !props.selected">
-						<td>£{{ props.item.name }}</td>
-						<td class="text-xs-right">£{{ props.item.calories }}</td>
-						<td class="text-xs-right">£{{ props.item.fat }}</td>
-					</tr>
-				</template>
-			</v-data-table>
-		</v-container>
+		<v-data-table
+			v-model="selected"
+			:headers="headers"
+			:items="desserts"
+			:pagination.sync="pagination"
+			item-key="name"
+			class="elevation-1"
+			hide-default-footer
+		>
+			<template v-slot:headers="props">
+				<tr>
+					<th>
+						<v-checkbox
+							:input-value="props.all"
+							:indeterminate="props.indeterminate"
+							primary
+							hide-details
+							@click.stop="toggleAll"
+						></v-checkbox>
+					</th>
+					<th
+						v-for="header in props.headers"
+						:key="header.text"
+						:class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+						@click="changeSort(header.value)"
+					>
+						<v-icon small>arrow_upward</v-icon>
+						{{ header.text }}
+					</th>
+				</tr>
+			</template>
+			<template v-slot:items="props">
+				<tr :active="props.selected" @click="props.selected = !props.selected">
+					<td>£{{ props.item.name }}</td>
+					<td class="text-xs-right">£{{ props.item.calories }}</td>
+					<td class="text-xs-right">£{{ props.item.fat }}</td>
+				</tr>
+			</template>
+		</v-data-table>
 	</div>
 </template>
 

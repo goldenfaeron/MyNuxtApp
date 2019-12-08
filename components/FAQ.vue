@@ -1,24 +1,58 @@
 <template>
-	<v-flex xs5>
-		<div style="margin-bottom: 10px" class="headline">Frequently Asked Questions</div>
-		<div class="tabs">
-			<div class="tab">
-				<input type="radio" id="rd1" name="rd" />
-				<label class="tab-label" for="rd1">Am I too old to straighten my teeth?</label>
-				<div
-					class="tab-content"
-				>No, orthodontics for adults is becoming more and more common. We can talk through your options with you.</div>
+	<div>
+		<v-sheet color="secondary">
+			<div @click="faq = !faq" style="margin-bottom: 2px; padding: 20px" class="headline white--text">
+				Frequently Asked Questions
+				<v-icon v-if="!faq" color="white">mdi-chevron-down</v-icon>
+				<v-icon v-else color="white">mdi-chevron-up</v-icon>
 			</div>
-			<div class="tab">
-				<input type="radio" id="rd2" name="rd" />
-				<label class="tab-label" for="rd2">I’m a nervous patient. Can you help me?</label>
-				<div
-					class="tab-content"
-				>We do understand that some people really struggle with dental treatment. But we have lots of ways to help put you at ease. Please just tell us how you feel and what worries you, and then we can work together to decide on the right approach.</div>
+		</v-sheet>
+		<div v-if="faq" class="tabs">
+			<div class="tab" v-for="(item, index) in values" :key="index">
+				<input type="radio" :id="'rd'+index" name="rd" />
+				<label class="tab-label" :for="'rd'+index">{{item.question}}</label>
+				<div class="tab-content">{{item.answer}}</div>
 			</div>
 		</div>
-	</v-flex>
+		<nuxt-link :to="link">{{linkText}}</nuxt-link>
+	</div>
 </template>
+
+<script>
+export default {
+	data() {
+		return {
+			faq: false,
+			values: [
+				{
+					question: "Am I too old to straighten my teeth?",
+					answer:
+						"No, orthodontics for adults is becoming more and more common. We can talk through your options with you."
+				},
+				{
+					question: "I’m a nervous patient. Can you help me?",
+					answer:
+						"We do understand that some people really struggle with dental treatment. But we have lots of ways to help put you at ease. Please just tell us how you feel and what worries you, and then we can work together to decide on the right approach."
+				},
+				{
+					question: "How often do I need a check-up?",
+					answer:
+						"Generally we recommend twice yearly check-ups every six months. However, this varies on a case by case basis. Your Bupa Dental Care dentist will talk to you about when and how often we need to see you."
+				},
+				{
+					question:
+						"I've been told I need a filling, but I hadn't noticed a problem.",
+					answer:
+						"Fillings repair small holes in your tooth enamel. If they aren’t filled, the decay will deepen. You’ll start to feel pain, and you could end up needing root canal treatment, which is much more significant and costs more. So although you might not feel pain right now, it’s best to repair these holes as soon as possible."
+				}
+			],
+
+			linkText: "See more",
+			link: ""
+		};
+	}
+};
+</script>
 
 <style lang="scss" scoped>
 $midnight: #2c3e50;
@@ -43,16 +77,7 @@ input {
 	opacity: 0;
 	z-index: -1;
 }
-// Layout
-.row {
-	display: flex;
-	.col {
-		flex: 1;
-		&:last-child {
-			margin-left: 1em;
-		}
-	}
-}
+
 /* Accordion styles */
 .tabs {
 	border-radius: 8px;
