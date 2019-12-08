@@ -1,7 +1,6 @@
 <template>
 	<v-flex>
 		<v-btn
-			transition="fade-transition"
 			@click="top()"
 			v-scroll="onScroll"
 			v-show="scrollButton"

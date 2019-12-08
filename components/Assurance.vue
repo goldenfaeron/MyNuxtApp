@@ -2,7 +2,7 @@
 	<div class="mission">
 		<v-container grid-list-xs>
 			<v-layout mx-5 my-5 row wrap>
-				<v-flex sm6 md4 offset-md1 my-3 v-for="(item, index) in values" :key="index">
+				<v-flex m6 md4 offset-md1 my-3 v-for="(item, index) in values" :key="index">
 					<div class="headline font-weight-bold" color="secondary">
 						<v-icon large color="secondary">{{item.icon}}</v-icon>
 						<span class="secondary--text">{{item.text}}</span>
@@ -17,6 +17,7 @@
 export default {
 	data() {
 		return {
+			show: false,
 			values: [
 				{
 					icon: "mdi-checkbox-marked-circle-outline",
@@ -32,4 +33,6 @@ export default {
 	}
 };
 </script>
+
+
 
