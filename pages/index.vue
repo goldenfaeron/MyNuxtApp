@@ -37,6 +37,7 @@
 		</v-toolbar>
 		<HeaderImage></HeaderImage>
 		<Mission></Mission>
+		<Practices></Practices>
 
 		<v-container grid-list-xs>
 			<v-divider></v-divider>
@@ -78,6 +79,7 @@
 import Logo from "~/components/Logo.vue";
 
 export default {
+	
 	components: {
 		About: () => import("@/components/About"),
 		Accreditation: () => import("@/components/Accreditation"),
@@ -89,6 +91,7 @@ export default {
 		HeaderImage: () => import("@/components/HeaderImage"),
 		Mission: () => import("@/components/Mission"),
 		NavigationList: () => import("@/components/NavigationList"),
+		Practices: () => import("@/components/Practices"),
 		Prices: () => import("@/components/Prices"),
 		Timeline: () => import("@/components/Timeline")
 	},
