@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<HeaderImage></HeaderImage>
 		<v-toolbar dark color="secondary">
 			<!-- Show larger sizes -->
 			<v-layout wrap hidden-sm-and-down>
@@ -35,19 +36,18 @@
 				</v-layout>
 			</v-toolbar-items>
 		</v-toolbar>
-		<HeaderImage></HeaderImage>
 		<Mission></Mission>
 		<Practices></Practices>
 
 		<v-container grid-list-xs>
 			<v-divider></v-divider>
 			<v-layout my-5 column>
-				<About></About>
+				<About id="about"></About>
 			</v-layout>
 		</v-container>
 
-		<Assurance></Assurance>
-		<v-img :src="require('@/assets/bupa/map.png')"></v-img>
+		<Assurance id="assurance"></Assurance>
+		<Map></Map>
 
 		<!-- PRICES -->
 		<v-container>
@@ -89,6 +89,7 @@ export default {
 		Feedback: () => import("@/components/Feedback"),
 		Gallery: () => import("@/components/gallery/Gallery"),
 		HeaderImage: () => import("@/components/HeaderImage"),
+		Map: () => import("@/components/Map"),
 		Mission: () => import("@/components/Mission"),
 		NavigationList: () => import("@/components/NavigationList"),
 		Practices: () => import("@/components/Practices"),
