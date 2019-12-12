@@ -16,7 +16,7 @@
 
 		<!-- NAVBAR  -->
 		<v-app-bar class="primary white--text" :clipped-left="clipped" fixed app>
-			<v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+			<v-app-bar-nav-icon color="accent lighten-1" @click.stop="drawer = !drawer" />
 
 			<v-toolbar-title
 				style="cursor:pointer;"
@@ -25,9 +25,14 @@
 				v-text="$store.state.site.name"
 			/>
 			<v-spacer />
-			<v-btn icon @click.stop="rightDrawer = !rightDrawer">
+			<!-- <v-btn icon @click.stop="rightDrawer = !rightDrawer">
 				<v-icon>mdi-menu</v-icon>
-			</v-btn>
+			</v-btn>-->
+
+			<div class="white--text">
+				Contact Us
+				<v-icon mr-3 color="accent lighten-1">mdi-phone-message</v-icon>
+			</div>
 		</v-app-bar>
 
 		<v-content>

@@ -38,19 +38,19 @@ export default {
 			title: "Patient Feedbck",
 			values: [
 				{
-					color: "primary",
+					color: "primary lighten-1",
 					percent: 50,
 					text:
 						"Of our patients surveyed say ‘I feel involved in all decisions about my care."
 				},
 				{
-					color: "secondary",
+					color: "secondary lighten-1",
 					percent: 80,
 					text:
 						"Of our patients surveyed would recommend our practice to others."
 				},
 				{
-					color: "accent",
+					color: "accent ",
 					percent: 90,
 					text:
 						"Of our patients surveyed say ‘The quality of their treatment was good."
