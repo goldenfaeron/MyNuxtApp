@@ -26,7 +26,7 @@
 									<div class="title font-weight-light">
 										<v-icon color="secondary">mdi-map-marker</v-icon>
 										{{address}}
-										<a href>View on map</a>
+										<a style="text-decoration:underline" @click.stop="scroll('Map')">View on map</a>
 									</div>
 
 									<div class="title font-weight-light">
@@ -65,6 +65,18 @@ export default {
 			subHeading:
 				"Currently accepting new private patients and dentist referrals"
 		};
+	},
+
+	methods: {
+		scroll(to) {
+			var el = document.getElementById(to);
+			if (el) {
+				el.scrollIntoView({
+					behavior: "smooth",
+					block: "center"
+				});
+			}
+		}
 	}
 };
 </script>

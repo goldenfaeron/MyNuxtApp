@@ -1,5 +1,5 @@
 <template>
-	<div class="mission">
+	<div class="assurance">
 		<v-container grid-list-xs>
 			<v-layout mx-5 my-5 row wrap>
 				<v-flex m6 md4 offset-md1 my-3 v-for="(item, index) in values" :key="index">

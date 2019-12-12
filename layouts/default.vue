@@ -49,8 +49,23 @@
 			<nuxt />
 
 			<!-- Footer -->
-			<v-footer>
-				<span>&copy; 2019</span>
+			<v-footer height="auto" color="primary ">
+				<v-layout justify-center row wrap>
+					<v-container>
+						<v-layout row wrap align-center justify-center>
+							<v-flex class="white--text" v-for="(item, index) in navigation" :key="index">
+								<nuxt-link :to="item.to">
+									<div class="white--text">{{item.title}}</div>
+								</nuxt-link>
+							</v-flex>
+						</v-layout>
+					</v-container>
+
+					<v-flex primary lighten-2 py-3 text-xs-center white--text xs12>
+						&copy;2018 —
+						<strong>Vuetify</strong>
+					</v-flex>
+				</v-layout>
 			</v-footer>
 		</v-content>
 

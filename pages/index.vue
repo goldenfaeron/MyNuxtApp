@@ -5,14 +5,14 @@
 			<!-- Show larger sizes -->
 			<v-layout wrap hidden-sm-and-down>
 				<v-btn
+					@click="scroll(item)"
 					x-large
 					color="secondary"
 					depressed
-					flat
-					tile
-					v-for="(item, index) in 5"
+					v-for="(item, index) in pageBar.componentIds"
 					:key="index"
-				>Button {{index}}</v-btn>
+				>{{item}}</v-btn>
+				<div class="white--text">{{pageBar.text}}</div>
 			</v-layout>
 			<!-- Show small -->
 			<v-layout wrap hidden-md-and-up hidden-xs-only>
@@ -36,22 +36,33 @@
 				</v-layout>
 			</v-toolbar-items>
 		</v-toolbar>
-		<Mission></Mission>
-		<Practices></Practices>
 
+		<Mission></Mission>
+		<!-- <Practices></Practices> -->
+
+		<!-- ABOUT -->
 		<v-container grid-list-xs>
 			<v-divider></v-divider>
 			<v-layout my-5 column>
-				<About id="about"></About>
+				<About id="About"></About>
 			</v-layout>
 		</v-container>
 
-		<Assurance id="assurance"></Assurance>
-		<Map></Map>
+		<!-- ASSURANCE -->
 
+		<Assurance></Assurance>
+		<!-- MAP -->
+		<Map id="Map" class="component"></Map>
+
+		<!-- OPENING TIMES -->
+		<v-container grid-list-xs>
+			<OpeningTimes class="setion"></OpeningTimes>
+		</v-container>
+
+		<v-divider class="section"></v-divider>
 		<!-- PRICES -->
 		<v-container>
-			<Prices></Prices>
+			<Prices id="Prices" class="section"></Prices>
 		</v-container>
 
 		<!-- ACCREDITATION AND FAQ -->
@@ -61,15 +72,14 @@
 					<Accreditation></Accreditation>
 				</v-flex>
 				<v-flex xs12 sm5 md4>
-					<FAQ></FAQ>
+					<FAQ id="FAQ"></FAQ>
 				</v-flex>
 			</v-layout>
 		</v-container>
-		<NavigationList></NavigationList>
 
 		<!-- Feedback -->
 		<v-container>
-			<Feedback></Feedback>
+			<Feedback class="section"></Feedback>
 		</v-container>
 	</div>
 </template>
@@ -79,7 +89,6 @@
 import Logo from "~/components/Logo.vue";
 
 export default {
-	
 	components: {
 		About: () => import("@/components/About"),
 		Accreditation: () => import("@/components/Accreditation"),
@@ -92,15 +101,37 @@ export default {
 		Map: () => import("@/components/Map"),
 		Mission: () => import("@/components/Mission"),
 		NavigationList: () => import("@/components/NavigationList"),
+		OpeningTimes: () => import("@/components/OpeningTimes"),
 		Practices: () => import("@/components/Practices"),
 		Prices: () => import("@/components/Prices"),
 		Timeline: () => import("@/components/Timeline")
 	},
 	data() {
 		return {
-			lorum:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+			ids: [],
+			pageBar: {
+				text: "Call us on 017583 34234",
+				componentIds: ["About", "Map", "FAQ", "Practises"]
+			}
 		};
+	},
+
+	methods: {
+		scroll(to) {
+			var el = document.getElementById(to);
+			if (el) {
+				el.scrollIntoView({
+					behavior: "smooth",
+					block: "center"
+				});
+			}
+		}
 	}
 };
 </script>
+
+<style lang="css">
+.section {
+	margin: 4vh 0;
+}
+</style>
