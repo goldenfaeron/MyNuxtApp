@@ -56,10 +56,10 @@
 
 		<!-- OPENING TIMES -->
 		<v-container grid-list-xs>
-			<OpeningTimes class="setion"></OpeningTimes>
+			<OpeningTimes class="section"></OpeningTimes>
+			<v-divider class="section"></v-divider>
 		</v-container>
 
-		<v-divider class="section"></v-divider>
 		<!-- PRICES -->
 		<v-container>
 			<Prices id="Prices" class="section"></Prices>
@@ -86,25 +86,20 @@
 
 
 <script>
-import Logo from "~/components/Logo.vue";
-
 export default {
 	components: {
 		About: () => import("@/components/About"),
 		Accreditation: () => import("@/components/Accreditation"),
 		Assurance: () => import("@/components/Assurance"),
-		Carousel: () => import("@/components/Carousel"),
 		FAQ: () => import("@/components/FAQ"),
 		Feedback: () => import("@/components/Feedback"),
-		Gallery: () => import("@/components/gallery/Gallery"),
 		HeaderImage: () => import("@/components/HeaderImage"),
 		Map: () => import("@/components/Map"),
 		Mission: () => import("@/components/Mission"),
 		NavigationList: () => import("@/components/NavigationList"),
 		OpeningTimes: () => import("@/components/OpeningTimes"),
 		Practices: () => import("@/components/Practices"),
-		Prices: () => import("@/components/Prices"),
-		Timeline: () => import("@/components/Timeline")
+		Prices: () => import("@/components/Prices")
 	},
 	data() {
 		return {
