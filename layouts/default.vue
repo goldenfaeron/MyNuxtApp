@@ -14,7 +14,7 @@
 			</v-list>
 		</v-navigation-drawer>
 
-		<!-- NAVBAR  -->
+		<!-- NAVBAr  -->
 		<v-app-bar class="primary white--text" :clipped-left="clipped" fixed app>
 			<v-app-bar-nav-icon color="accent lighten-1" @click.stop="drawer = !drawer" />
 
@@ -41,7 +41,7 @@
 				<v-container grid-list-xs>
 					<v-layout row>
 						<v-flex xs2 sm1>
-							<v-img max-height height="50" width="50" :src="require('@/assets/bupa/logo.png')"></v-img>
+							<LogoLink :props="{height:50, width:50}""> </LogoLink>
 						</v-flex>
 						<v-flex xs2 sm1 v-for="(item, i) in navigation" :key="i">
 							<nuxt-link :to="item.to">{{item.title}}</nuxt-link>
@@ -96,6 +96,7 @@
 <script>
 export default {
 	components: {
+		LogoLink: () => import("@/components/core/LogoLink"),
 		ScrollUpButton: () => import("@/components/core/ScrollUpButton")
 	},
 

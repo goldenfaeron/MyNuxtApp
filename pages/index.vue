@@ -38,6 +38,7 @@
 		</v-toolbar>
 
 		<Mission></Mission>
+
 		<!-- <Practices></Practices> -->
 
 		<!-- ABOUT -->
