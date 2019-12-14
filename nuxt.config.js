@@ -1,8 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
 
-
-
-
 export default {
   mode: 'universal',
   /*
@@ -50,6 +47,40 @@ export default {
   axios: {
     // proxyHeaders: false
   },
+
+  // routes: function () {
+
+  //   let paintings = axios.post("http://localhost/api/collections/get/paintings?token=7915796cfc0e36b8e176365f73a329",
+  //     {
+
+  //       fields: { permalink: 1, _id: 0 }
+  //     })
+  //     .then((res) => {
+  //       return res.data.entries.map((entry) => {
+  //         return {
+  //           route: '/film/' + entry.permalink
+  //         }
+
+  //       })
+  //     });
+  //   let prints = axios.post("http://localhost/api/collections/get/prints?token=7915796cfc0e36b8e176365f73a329",
+  //     {
+
+  //       fields: { permalink: 1, _id: 0 }
+  //     })
+  //     .then((res) => {
+  //       return res.data.entries.map((entry) => {
+  //         return {
+  //           route: '/stuff/' + entry.permalink
+  //         }
+  //       })
+  //     });
+
+  //   return Promise.all([paintings, prints]).then(values => {
+  //     return [...values[0], ...values[1]]
+  //   })
+
+  // },
 
 
   /*

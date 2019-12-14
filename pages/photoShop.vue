@@ -68,11 +68,5 @@ export default {
 		...mapMutations(["addToCart"])
 	}
 };
-
-// body: {
-// 			filter: { _id: route.params.id },
-// 			fields: { title: 1, description: 1, image: 1, audio: 1 },
-// 			limit: 1
-// 		}
 </script>
 

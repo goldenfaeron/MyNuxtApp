@@ -22,7 +22,7 @@
 				style="cursor:pointer;"
 				@click="go('/')"
 				class="toolbar-title title-cursive"
-				v-text="$store.state.site.name"
+				v-text="$store.state.name"
 			/>
 			<v-spacer />
 			<!-- <v-btn icon @click.stop="rightDrawer = !rightDrawer">
@@ -40,11 +40,15 @@
 			<v-toolbar dark color="white">
 				<v-container grid-list-xs>
 					<v-layout row>
-						<v-flex xs2 sm1>
-							<LogoLink :props="{height:50, width:50}""> </LogoLink>
+						<v-flex xs2>
+							<LogoLink :props="{height:50, width:50}"></LogoLink>
 						</v-flex>
-						<v-flex xs2 sm1 v-for="(item, i) in navigation" :key="i">
-							<nuxt-link :to="item.to">{{item.title}}</nuxt-link>
+						<v-flex xs10>
+							<v-layout row justify-center align-center>
+								<v-flex v-for="(item, i) in navigation" :key="i">
+									<nuxt-link :to="item.to">{{item.title}}</nuxt-link>
+								</v-flex>
+							</v-layout>
 						</v-flex>
 					</v-layout>
 				</v-container>
@@ -54,7 +58,7 @@
 			<nuxt />
 
 			<!-- Footer -->
-			<v-footer height="auto" color="primary ">
+			<v-footer height="auto" color="primary" bottom>
 				<v-layout justify-center row wrap>
 					<v-container>
 						<v-layout row wrap align-center justify-center>
