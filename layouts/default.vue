@@ -58,7 +58,7 @@
 			<nuxt />
 
 			<!-- Footer -->
-			<v-footer height="auto" color="primary" bottom>
+			<v-footer height="auto" color="primary" :fixed="fixed" app>
 				<v-layout justify-center row wrap>
 					<v-container>
 						<v-layout row wrap align-center justify-center>
