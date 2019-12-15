@@ -82,12 +82,31 @@
 		<v-container>
 			<Feedback class="section"></Feedback>
 		</v-container>
+
+		<v-container grid-list-xs>
+			<Practices :props="request"></Practices>
+		</v-container>
 	</div>
 </template>
 
 
 <script>
 export default {
+	async asyncData({ $axios, route, store }) {
+		let collection = "bupaPractices";
+		let { data } = await $axios.post(
+			store.state.webRoot +
+				"/api/collections/get/" +
+				collection +
+				"?token=" +
+				store.state.collectionsToken
+			// {
+			// 	filter: { permalink: route.params.id }
+			// }
+		);
+		return { request: data.entries };
+	},
+
 	components: {
 		About: () => import("@/components/About"),
 		Accreditation: () => import("@/components/Accreditation"),
@@ -125,6 +144,7 @@ export default {
 	}
 };
 </script>
+
 
 <style lang="css">
 .section {

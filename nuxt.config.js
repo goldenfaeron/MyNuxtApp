@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import axios from 'axios'
+
 
 export default {
   mode: 'universal',
@@ -48,39 +50,41 @@ export default {
     // proxyHeaders: false
   },
 
-  // routes: function () {
+  generate: {
+    routes: function () {
 
-  //   let paintings = axios.post("http://localhost/api/collections/get/paintings?token=7915796cfc0e36b8e176365f73a329",
-  //     {
+      return axios.post("http://cockpit.hackmylanguage/api/collections/get/bupaPractices?token=5f75965a9da5820efd6b82f8c4293a",
+        {
 
-  //       fields: { permalink: 1, _id: 0 }
-  //     })
-  //     .then((res) => {
-  //       return res.data.entries.map((entry) => {
-  //         return {
-  //           route: '/film/' + entry.permalink
-  //         }
+          fields: { slug: 1, _id: 0 }
+        })
+        .then((res) => {
+          return res.data.entries.map((entry) => {
+            return {
+              route: '/practices/' + entry.slug
+            }
 
-  //       })
-  //     });
-  //   let prints = axios.post("http://localhost/api/collections/get/prints?token=7915796cfc0e36b8e176365f73a329",
-  //     {
+          })
+        });
+      //   let prints = axios.post("http://localhost/api/collections/get/prints?token=7915796cfc0e36b8e176365f73a329",
+      //     {
 
-  //       fields: { permalink: 1, _id: 0 }
-  //     })
-  //     .then((res) => {
-  //       return res.data.entries.map((entry) => {
-  //         return {
-  //           route: '/stuff/' + entry.permalink
-  //         }
-  //       })
-  //     });
+      //       fields: { permalink: 1, _id: 0 }
+      //     })
+      //     .then((res) => {
+      //       return res.data.entries.map((entry) => {
+      //         return {
+      //           route: '/stuff/' + entry.permalink
+      //         }
+      //       })
+      //     });
 
-  //   return Promise.all([paintings, prints]).then(values => {
-  //     return [...values[0], ...values[1]]
-  //   })
+      // return Promise.all([paintings, prints]).then(values => {
+      //   return [...values[0], ...values[1]]
+      // })
+    },
 
-  // },
+  },
 
 
   /*

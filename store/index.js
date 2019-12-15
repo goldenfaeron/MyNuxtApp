@@ -5,7 +5,8 @@ export const state = () => ({
 
 
     masterToken: 'd2e55cc7bc1ba0b4f7d66c43afb30a',
-    bupaPractisesToken: '5f75965a9da5820efd6b82f8c4293a',
+    bupaPracticesToken: '5f75965a9da5820efd6b82f8c4293a',
+    collectionsToken: 'ffcadb7b92232dd64da8cda5fa895d',
     //COLLECTION API TOKENS GO HERE 
     assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads",
     webRoot: "https://cockpit.hackmylanguage.com",
