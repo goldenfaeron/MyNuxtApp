@@ -1,0 +1,6 @@
+> Routing and async methods 
+
+Nuxt will execute the first async method in its page structure.
+It wont execute another when routing to another page using NuxtLink 
+RouterLink. Only using <a> will circumvent this
+
