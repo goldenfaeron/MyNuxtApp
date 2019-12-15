@@ -2,11 +2,11 @@
 	<!-- <div>{{values}}</div> -->
 	<v-container grid-list-xs>
 		<v-layout column wrap>
-			{{$route.params.id}}
-			{{values}}
-			<!-- <v-img :src="$store.state.assetRoot + values.image.path"></v-img>
+			<!-- {{$route.params.id}}
+			{{values}}-->
+			<v-img :src="$store.state.assetRoot + values.image.path"></v-img>
 			<h1>{{values.title}}</h1>
-			<h2>{{values.location.address}}</h2>-->
+			<h2>{{values.location.address}}</h2>
 		</v-layout>
 	</v-container>
 </template>
@@ -28,6 +28,8 @@ export default {
 	// 	return { values: data.entries[0] };
 	// },
 
+	watchQuery: ["page"],
+
 	asyncData({ params, store, $axios, route }) {
 		let collection = "bupaPractices";
 		return $axios
@@ -42,10 +44,23 @@ export default {
 				}
 			)
 			.then(res => {
-				return { values: res.data.entries };
+				return { values: res.data.entries[0] };
 			});
 	},
-	data() {}
+	data() {},
+	head() {
+		return {
+			title: this.values.title,
+			meta: [
+				// hid is used as unique identifier. Do not use `vmid` for it as it will not work
+				{
+					hid: "description",
+					name: "description",
+					content: "My custom description"
+				}
+			]
+		};
+	}
 };
 
 // export default {

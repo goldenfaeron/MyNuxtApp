@@ -53,7 +53,7 @@ export default {
   generate: {
     routes: function () {
 
-      return axios.post("http://cockpit.hackmylanguage/api/collections/get/bupaPractices?token=5f75965a9da5820efd6b82f8c4293a",
+      return axios.post("https://cockpit.hackmylanguage.com/api/collections/get/bupaPractices?token=ffcadb7b92232dd64da8cda5fa895d",
         {
 
           fields: { slug: 1, _id: 0 }
