@@ -11,6 +11,18 @@
 						<v-list-item-title v-text="item.title" />
 					</v-list-item-content>
 				</v-list-item>
+
+				<v-list-item v-for="(item, index) in $store.state.navigation.entries" :key="index" router exact>
+					<v-list-item-action>
+						<v-icon>mdi-hospital</v-icon>
+					</v-list-item-action>
+
+					<v-list-item-content>
+						<a :href="'/practices/' + item.slug">
+							<v-list-item-titel>{{item.title}}</v-list-item-titel>
+						</a>
+					</v-list-item-content>
+				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
 

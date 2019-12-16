@@ -38,6 +38,7 @@
 		</v-toolbar>
 
 		<Mission></Mission>
+		<!-- {{$store.state.navigation}}/ -->
 
 		<!-- <Practices></Practices> -->
 
@@ -92,6 +93,28 @@
 
 <script>
 export default {
+	//Populate store navigation
+
+	//Get practises
+
+	fetch({ store, params, $axios }) {
+		let collection = "bupaPractices";
+		return $axios
+			.post(
+				store.state.webRoot +
+					"/api/collections/get/" +
+					collection +
+					"?token=" +
+					store.state.collectionsToken,
+				{
+					fields: { title: 1, slug: 1, image: 1 }
+				}
+			)
+			.then(res => {
+				store.commit("setNavigation", res.data);
+			});
+	},
+
 	async asyncData({ $axios, route, store }) {
 		let collection = "bupaPractices";
 		let { data } = await $axios.post(

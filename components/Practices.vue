@@ -1,15 +1,16 @@
 <template>
 	<!-- <div>{{values}}</div> -->
 	<div>
-		<div v-for="(item, index) in props" :key="index">
-			<router-link :to="'/practices/'+item.slug">Router: {{item.title}}</router-link>
-			<br />
+		<div v-for="(item, index) in values" :key="index">
 			<a :href="'/practices/'+item.slug">{{item.title}}</a>
-			<!-- <nuxt-link
-				no-prefetch
-				:to="{path: 'practices/' +item.slug , params: { id:item.slug } }"
-			>{{item.title}}</nuxt-link>-->
-			<!-- <div @click="go('/practices/' + item.slug)">{{item.title}}</div> -->
+
+			<v-img
+				height="100"
+				width="100"
+				:src="$store.state.webRoot+'/api/cockpit/image?token='+$store.state.imageToken+'&src='+item.image._id+'&w=100&h=100&o=true'"
+			></v-img>
+			<!-- <br />Nuxt link
+			<nuxt-link :to="'/practices/'+item.slug">{{item.title}}</nuxt-link>-->
 			<br />
 			<br />
 		</div>
@@ -18,12 +19,10 @@
 
 <script>
 export default {
-	props: ["props"],
-	data() {},
-	methods: {
-		go(route) {
-			this.$router.push(route);
-		}
+	data() {
+		return {
+			values: this.$store.state.navigation.entries
+		};
 	}
 };
 </script>
