@@ -1,90 +1,154 @@
 <template>
 	<div>
-		<Carousel :content="carouselContent" cycle="true"></Carousel>
-		<v-container grid-list-xs>
-			<v-layout column justify-center align-center>
-				<div class="display-2 text-uppercase">Sam and Tobias Cool Website</div>
-				<br />
-				<div
-					class="display-1"
-				>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula porta felis euismod semper.</div>
-				<br />
-				<div class="body-2">{{lorum}}</div>
-				<div>{{lorum}}</div>
-				<br />
+		<HeaderImage></HeaderImage>
+		<v-toolbar dark color="secondary">
+			<!-- Show larger sizes -->
+			<v-layout wrap hidden-sm-and-down>
+				<v-btn
+					@click="scroll(item)"
+					x-large
+					color="secondary"
+					depressed
+					v-for="(item, index) in pageBar.componentIds"
+					:key="index"
+				>{{item}}</v-btn>
+				<div class="accent--text">{{pageBar.text}}</div>
 			</v-layout>
-			<v-layout>
-				<Timeline></Timeline>
-			</v-layout>
-			<v-layout row wrap>
-				<div>{{lorum}}</div>
-				<br />
-				<div>{{lorum}}</div>
+			<!-- Show small -->
+			<v-layout wrap hidden-md-and-up hidden-xs-only>
+				<v-btn
+					color="secondary"
+					depressed
+					flat
+					tile
+					v-for="(item, index) in 5"
+					:key="index"
+				>Button {{index}}</v-btn>
 			</v-layout>
 
-			<v-layout my-5 row wrap>
-				<Gallery :props="galleryContent"></Gallery>
+			<v-toolbar-items>
+				<v-layout hidden-sm-and-up>
+					<v-flex>
+						<v-btn icon>
+							<v-icon>mdi-menu</v-icon>
+						</v-btn>MENU
+					</v-flex>
+				</v-layout>
+			</v-toolbar-items>
+		</v-toolbar>
+
+		<Mission></Mission>
+		<!-- {{$store.state.navigation}}/ -->
+
+		<!-- <Practices></Practices> -->
+
+		<!-- ABOUT -->
+		<v-container grid-list-xs>
+			<v-divider></v-divider>
+			<v-layout my-5 column>
+				<About id="About"></About>
 			</v-layout>
+		</v-container>
+
+		<!-- ASSURANCE -->
+
+		<Assurance></Assurance>
+		<!-- MAP -->
+		<Map id="Map" class="component"></Map>
+
+		<!-- OPENING TIMES -->
+		<v-container grid-list-xs>
+			<OpeningTimes class="section"></OpeningTimes>
+			<v-divider class="section"></v-divider>
+		</v-container>
+
+		<!-- PRICES -->
+		<v-container>
+			<Prices id="Prices" class="section"></Prices>
+		</v-container>
+
+		<!-- ACCREDITATION AND FAQ -->
+		<v-container grid-list-lg>
+			<v-layout row my-5>
+				<v-flex xs12 sm5 md8>
+					<Accreditation></Accreditation>
+				</v-flex>
+				<v-flex xs12 sm5 md4>
+					<FAQ id="FAQ"></FAQ>
+				</v-flex>
+			</v-layout>
+		</v-container>
+
+		<!-- Feedback -->
+		<v-container>
+			<Feedback class="section"></Feedback>
+		</v-container>
+
+		<v-container grid-list-xs>
+			<Practices :props="request"></Practices>
 		</v-container>
 	</div>
 </template>
 
-<script>
-import Logo from "~/components/Logo.vue";
-import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
+<script>
 export default {
+	async asyncData({ $axios, route, store }) {
+		let collection = "bupaPractices";
+		let { data } = await $axios.post(
+			store.state.webRoot +
+				"/api/collections/get/" +
+				collection +
+				"?token=" +
+				store.state.collectionsToken
+			// {
+			// 	filter: { permalink: route.params.id }
+			// }
+		);
+		return { request: data.entries };
+	},
+
 	components: {
-		Carousel: () => import("@/components/Carousel"),
-		Timeline: () => import("@/components/Timeline"),
-		Gallery: () => import("@/components/gallery/Gallery")
+		About: () => import("@/components/About"),
+		Accreditation: () => import("@/components/Accreditation"),
+		Assurance: () => import("@/components/Assurance"),
+		FAQ: () => import("@/components/FAQ"),
+		Feedback: () => import("@/components/Feedback"),
+		HeaderImage: () => import("@/components/HeaderImage"),
+		Map: () => import("@/components/Map"),
+		Mission: () => import("@/components/Mission"),
+		NavigationList: () => import("@/components/NavigationList"),
+		OpeningTimes: () => import("@/components/OpeningTimes"),
+		Practices: () => import("@/components/Practices"),
+		Prices: () => import("@/components/Prices")
 	},
 	data() {
 		return {
-			lorum:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-			carouselContent: [
-				{
-					src: "bike.jpg",
-					title: "Nice bike",
-					caption:
-						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
-				},
-				{
-					src: "camping.jpg",
-					title: "Camping is fun",
-					caption:
-						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
-				},
-				{
-					src: "mine.jpg",
-					title: "Feet bathing in water",
-					caption:
-						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
-				}
-			],
-
-			galleryContent: [
-				{
-					src: "tent.jpg",
-					title: "Camping is amazing!",
-					caption:
-						"Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et."
-				},
-				{
-					src: "river.jpg",
-					title: "I love rivers so much",
-					caption:
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper."
-				},
-				{
-					src: "roadtrip.jpg",
-					title: "Taking a roadtrip through morocco",
-					caption:
-						"Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
-				}
-			]
+			ids: [],
+			pageBar: {
+				text: "Call us on 017583 34234",
+				componentIds: ["About", "Map", "FAQ", "Practises"]
+			}
 		};
+	},
+
+	methods: {
+		scroll(to) {
+			var el = document.getElementById(to);
+			if (el) {
+				el.scrollIntoView({
+					behavior: "smooth",
+					block: "center"
+				});
+			}
+		}
 	}
 };
 </script>
+
+
+<style lang="css">
+.section {
+	margin: 4vh 0;
+}
+</style>

@@ -1,0 +1,9 @@
+> Routing and async methods 
+
+Nuxt will execute the first async method in its page structure.
+It wont execute another when routing to another page using NuxtLink 
+RouterLink. Only using <a> will circumvent this
+
+We could also use fetch which is ran every time when navigating
+Fetch however, works only for store operations. So we could theoretically
+get our component data via the after committing it to store on fetch

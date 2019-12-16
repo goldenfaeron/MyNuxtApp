@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-
+import axios from 'axios'
 
 
 export default {
@@ -16,7 +16,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon2.ico' }
     ]
   },
   /*
@@ -50,6 +50,42 @@ export default {
     // proxyHeaders: false
   },
 
+  generate: {
+    routes: function () {
+
+      return axios.post("https://cockpit.hackmylanguage.com/api/collections/get/bupaPractices?token=ffcadb7b92232dd64da8cda5fa895d",
+        {
+
+          fields: { slug: 1, _id: 0 }
+        })
+        .then((res) => {
+          return res.data.entries.map((entry) => {
+            return {
+              route: '/practices/' + entry.slug
+            }
+
+          })
+        });
+      //   let prints = axios.post("http://localhost/api/collections/get/prints?token=7915796cfc0e36b8e176365f73a329",
+      //     {
+
+      //       fields: { permalink: 1, _id: 0 }
+      //     })
+      //     .then((res) => {
+      //       return res.data.entries.map((entry) => {
+      //         return {
+      //           route: '/stuff/' + entry.permalink
+      //         }
+      //       })
+      //     });
+
+      // return Promise.all([paintings, prints]).then(values => {
+      //   return [...values[0], ...values[1]]
+      // })
+    },
+
+  },
+
 
   /*
   ** vuetify module configuration
@@ -58,17 +94,20 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: false,
+
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
+        light: {
+          primary: '#00325C',
+          accent: '#FFFFFF',
+          secondary: '#0179C9',
+          info: '#D8D6D8',
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: '#4CAF50', //#94c8ed
+          text: "#FFFFFF"
+
         }
+
       }
     }
   },

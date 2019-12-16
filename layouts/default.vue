@@ -1,8 +1,9 @@
 <template>
 	<v-app>
+		<!-- LEFT DRAWER  -->
 		<v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
 			<v-list>
-				<v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+				<v-list-item v-for="(item, i) in navigation" :key="i" :to="item.to" router exact>
 					<v-list-item-action>
 						<v-icon>{{ item.icon }}</v-icon>
 					</v-list-item-action>
@@ -10,77 +11,117 @@
 						<v-list-item-title v-text="item.title" />
 					</v-list-item-content>
 				</v-list-item>
+
+				<v-list-item v-for="(item, index) in $store.state.navigation.entries" :key="index" router exact>
+					<v-list-item-action>
+						<v-icon>mdi-hospital</v-icon>
+					</v-list-item-action>
+
+					<v-list-item-content>
+						<a :href="'/practices/' + item.slug">
+							<v-list-item-title>{{item.title}}</v-list-item-title>
+						</a>
+					</v-list-item-content>
+				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
-		<v-app-bar :clipped-left="clipped" fixed app>
-			<v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-			<v-btn icon @click.stop="miniVariant = !miniVariant">
-				<v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-			</v-btn>
-			<v-btn icon @click.stop="clipped = !clipped">
-				<v-icon>mdi-application</v-icon>
-			</v-btn>
-			<v-btn icon @click.stop="fixed = !fixed">
-				<v-icon>mdi-minus</v-icon>
-			</v-btn>
-			<v-toolbar-title v-text="title" />
+
+		<!-- NAVBAr  -->
+		<v-app-bar class="primary accent--text" :clipped-left="clipped" fixed app>
+			<v-app-bar-nav-icon color="accent lighten-1" @click.stop="drawer = !drawer" />
+
+			<v-toolbar-title
+				style="cursor:pointer;"
+				@click="go('/')"
+				class="toolbar-title title-cursive"
+				v-text="$store.state.name"
+			/>
 			<v-spacer />
-			<v-btn icon @click.stop="rightDrawer = !rightDrawer">
+			<!-- <v-btn icon @click.stop="rightDrawer = !rightDrawer">
 				<v-icon>mdi-menu</v-icon>
-			</v-btn>
+			</v-btn>-->
+
+			<div class="accent--text">
+				Contact Us
+				<v-icon mr-3 color="accent lighten-1">mdi-phone-message</v-icon>
+			</div>
 		</v-app-bar>
+
 		<v-content>
+			<!-- navigation -->
+			<v-toolbar dark color="accent">
+				<v-container grid-list-xs>
+					<v-layout row>
+						<v-flex xs2>
+							<LogoLink :props="{height:50, width:50}"></LogoLink>
+						</v-flex>
+						<v-flex xs10>
+							<v-layout row justify-center align-center>
+								<v-flex v-for="(item, i) in navigation" :key="i">
+									<nuxt-link :to="item.to">{{item.title}}</nuxt-link>
+								</v-flex>
+							</v-layout>
+						</v-flex>
+					</v-layout>
+				</v-container>
+			</v-toolbar>
+
+			<!-- Site Content -->
 			<nuxt />
+
+			<!-- Footer -->
+			<v-footer height="auto" color="primary" :fixed="fixed" app>
+				<v-layout justify-center row wrap>
+					<v-container>
+						<v-layout row wrap align-center justify-center>
+							<v-flex class="accent--text" v-for="(item, index) in navigation" :key="index">
+								<nuxt-link :to="item.to">
+									<div class="accent--text">{{item.title}}</div>
+								</nuxt-link>
+							</v-flex>
+						</v-layout>
+					</v-container>
+
+					<v-flex primary lighten-2 py-3 text-xs-center accent--text xs12>
+						&copy;2018 —
+						<strong>Vuetify</strong>
+					</v-flex>
+				</v-layout>
+			</v-footer>
 		</v-content>
-		<v-navigation-drawer v-model="rightDrawer" right temporary fixed>
+
+		<!-- GO UP BUTTON  -->
+		<ScrollUpButton></ScrollUpButton>
+
+		<!-- RIGHT DRAWER  -->
+		<v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
 			<v-list>
 				<v-list-item @click.native="right = !right">
-				    <v-badge>
-      					<template v-slot:badge>
-        					<span>{{$store.state.cart.length}}</span>
-      					</template>	
-					
-							<v-btn icon>
-							<v-icon class="mdi-dark mdi-36px">mdi-cart</v-icon>
-						</v-btn>
-						
-				    </v-badge>
-
-					<v-list-item-title style="margin-left:30px;">Shopping cart</v-list-item-title>
+					<v-list-item-action>
+						<v-icon light>mdi-repeat</v-icon>
+					</v-list-item-action>
+					<v-list-item-title>Switch drawer (click me)</v-list-item-title>
 				</v-list-item>
-				<v-layout column space>
-				<v-flex xs12 md4 my5 v-for="(item, index) in $store.state.cart" :key="index">
-					<v-card :color="item.color">
-						<v-card-title primary-title>
-							<div>
-								<h3 class="headline mb-0">{{item.title}}</h3>
-							</div>
-						</v-card-title>
-						<v-img aspect-ratio="1" max-height="500" :src="webRoot + item.image.path"></v-img>
-						<v-card-actions>
-						<!--<v-btn color="white" @click="deleteFromCart(item)" text>Delete</v-btn>-->
-						</v-card-actions>
-					</v-card>
-				</v-flex>
-				</v-layout>
 			</v-list>
 		</v-navigation-drawer>
-		<v-footer :fixed="fixed" app>
-			<span>&copy; 2019</span>
-		</v-footer>
+
+		<!-- FOOTER  -->
 	</v-app>
 </template>
 
 <script>
 export default {
+	components: {
+		LogoLink: () => import("@/components/core/LogoLink"),
+		ScrollUpButton: () => import("@/components/core/ScrollUpButton")
+	},
+
 	data() {
 		return {
-			assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads",
-			webRoot: "https://cockpit.hackmylanguage.com",
 			clipped: false,
 			drawer: false,
 			fixed: false,
-			items: [
+			navigation: [
 				{
 					icon: "mdi-apps",
 					title: "Welcome",
@@ -88,41 +129,46 @@ export default {
 				},
 				{
 					icon: "mdi-chart-bubble",
-					title: "Inspire",
-					to: "/inspire"
+					title: "Health",
+					to: "/health"
 				},
 				{
 					icon: "mdi-book-open-page-variant",
-					title: "Learn Nuxt & Vuetify",
-					to: "/learn"
+					title: "Dental",
+					to: "/dental"
 				},
 				{
 					icon: "mdi-apps",
-					title: "API testing",
-					to: "/api"
+					title: "Care Homes",
+					to: "/care-homes"
 				},
 
 				{
 					icon: "mdi-image",
-					title: "Image test",
-					to: "/image"
+					title: "Travel",
+					to: "/travel"
 				},
 				{
 					icon: "mdi-currency-usd",
-					title: "Products",
-					to: "/products"
-				},
-				{
-					icon: "mdi-camera",
-					title: "Photo Shop",
-					to: "/photoshop"
+					title: "Health Information",
+					to: "/health-information"
 				}
 			],
 			miniVariant: false,
 			right: true,
-			rightDrawer: false,
-			title: "Vuetify.js"
+			rightDrawer: false
 		};
+	},
+	methods: {
+		go(route) {
+			this.$router.push(route);
+		},
+		goBack() {
+			this.$router.back();
+		}
 	}
 };
 </script>
+
+<style lang="css">
+</style>
