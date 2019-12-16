@@ -1,8 +1,12 @@
 <template>
 	<!-- <div>{{values}}</div> -->
 	<div>
-		<div v-for="(item, index) in values" :key="index">
-			<a :href="'/practices/'+item.slug">{{item.title}}</a>
+<v-container grid-list-lg>
+
+		<v-layout row>
+			<v-flex xs6 v-for="(item, index) in values" :key="index">
+		<v-card >
+		<a :href="'/practices/'+item.slug">{{item.title}}</a>
 
 			<v-img
 				height="100"
@@ -11,10 +15,13 @@
 			></v-img>
 			<!-- <br />Nuxt link
 			<nuxt-link :to="'/practices/'+item.slug">{{item.title}}</nuxt-link>-->
-			<br />
-			<br />
+	
+			</v-card>
+			</v-flex>
+		</v-layout>
+	</v-container>
+			
 		</div>
-	</div>
 </template>
 
 <script>
