@@ -12,7 +12,7 @@
 					v-for="(item, index) in pageBar.componentIds"
 					:key="index"
 				>{{item}}</v-btn>
-				<div class="white--text">{{pageBar.text}}</div>
+				<div class="accent--text">{{pageBar.text}}</div>
 			</v-layout>
 			<!-- Show small -->
 			<v-layout wrap hidden-md-and-up hidden-xs-only>

@@ -27,7 +27,7 @@
 		</v-navigation-drawer>
 
 		<!-- NAVBAr  -->
-		<v-app-bar class="primary white--text" :clipped-left="clipped" fixed app>
+		<v-app-bar class="primary accent--text" :clipped-left="clipped" fixed app>
 			<v-app-bar-nav-icon color="accent lighten-1" @click.stop="drawer = !drawer" />
 
 			<v-toolbar-title
@@ -41,7 +41,7 @@
 				<v-icon>mdi-menu</v-icon>
 			</v-btn>-->
 
-			<div class="white--text">
+			<div class="accent--text">
 				Contact Us
 				<v-icon mr-3 color="accent lighten-1">mdi-phone-message</v-icon>
 			</div>
@@ -49,7 +49,7 @@
 
 		<v-content>
 			<!-- navigation -->
-			<v-toolbar dark color="white">
+			<v-toolbar dark color="accent">
 				<v-container grid-list-xs>
 					<v-layout row>
 						<v-flex xs2>
@@ -74,15 +74,15 @@
 				<v-layout justify-center row wrap>
 					<v-container>
 						<v-layout row wrap align-center justify-center>
-							<v-flex class="white--text" v-for="(item, index) in navigation" :key="index">
+							<v-flex class="accent--text" v-for="(item, index) in navigation" :key="index">
 								<nuxt-link :to="item.to">
-									<div class="white--text">{{item.title}}</div>
+									<div class="accent--text">{{item.title}}</div>
 								</nuxt-link>
 							</v-flex>
 						</v-layout>
 					</v-container>
 
-					<v-flex primary lighten-2 py-3 text-xs-center white--text xs12>
+					<v-flex primary lighten-2 py-3 text-xs-center accent--text xs12>
 						&copy;2018 —
 						<strong>Vuetify</strong>
 					</v-flex>

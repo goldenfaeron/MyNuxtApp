@@ -50,7 +50,7 @@ export default {
 						"Of our patients surveyed would recommend our practice to others."
 				},
 				{
-					color: "accent lighten-2 ",
+					color: "info darken-1",
 					percent: 90,
 					text:
 						"Of our patients surveyed say ‘The quality of their treatment was good."

@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<v-sheet color="accent">
-			<div @click="faq = !faq" style="margin-bottom: 2px; padding: 20px" class="headline white--text">
+		<v-sheet color="secondary lighten-2">
+			<div @click="faq = !faq" style="margin-bottom: 2px; padding: 20px" class="headline accent--text">
 				Frequently Asked Questions
 				<v-icon v-if="!faq" color="white">mdi-chevron-down</v-icon>
 				<v-icon v-else color="white">mdi-chevron-up</v-icon>

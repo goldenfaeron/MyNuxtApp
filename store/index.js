@@ -38,21 +38,20 @@ export const mutations = {
 
 export const actions = {
 
-    nuxtServerInit({ commit }) {
+    nuxtServerInit({ commit, state }) {
         let collection = "bupaPractices";
-        console.log("inited")
+        // console.log("inited")
         return axios.post(
 
-            "https://cockpit.hackmylanguage.com/api/collections/get/" +
+            state.webRoot + "/api/collections/get/" +
             collection +
-            "?token=d2e55cc7bc1ba0b4f7d66c43afb30a",
+            "?token=" + state.collectionsToken,
             {
                 fields: { title: 1, slug: 1, image: 1 }
             }
         )
             .then(res => {
                 commit("setNavigation", res.data);
-                console.log("commited" + res)
             });
     }
 

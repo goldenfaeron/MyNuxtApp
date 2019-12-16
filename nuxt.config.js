@@ -98,12 +98,13 @@ export default {
       themes: {
         light: {
           primary: '#00325C',
-          accent: '#008386',
+          accent: '#FFFFFF',
           secondary: '#0179C9',
           info: '#D8D6D8',
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: '#4CAF50' //#94c8ed
+          success: '#4CAF50', //#94c8ed
+          text: "#FFFFFF"
 
         }
 
