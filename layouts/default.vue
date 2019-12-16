@@ -19,7 +19,7 @@
 
 					<v-list-item-content>
 						<a :href="'/practices/' + item.slug">
-							<v-list-item-titel>{{item.title}}</v-list-item-titel>
+							<v-list-item-title>{{item.title}}</v-list-item-title>
 						</a>
 					</v-list-item-content>
 				</v-list-item>

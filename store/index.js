@@ -41,19 +41,18 @@ export const actions = {
     nuxtServerInit({ commit }) {
         let collection = "bupaPractices";
         console.log("inited")
-        let { data } = axios
-            .post(
+        return axios.post(
 
-                "https://cockpit.hackmylanguage.com/api/collections/get/" +
-                collection +
-                "?token=d2e55cc7bc1ba0b4f7d66c43afb30a",
-                {
-                    fields: { title: 1, slug: 1, image: 1 }
-                }
-            )
+            "https://cockpit.hackmylanguage.com/api/collections/get/" +
+            collection +
+            "?token=d2e55cc7bc1ba0b4f7d66c43afb30a",
+            {
+                fields: { title: 1, slug: 1, image: 1 }
+            }
+        )
             .then(res => {
-                store.commit("setNavigation", res.data);
-                console.log("commited")
+                commit("setNavigation", res.data);
+                console.log("commited" + res)
             });
     }
 

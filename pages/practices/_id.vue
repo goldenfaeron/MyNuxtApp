@@ -2,11 +2,8 @@
 	<!-- <div>{{values}}</div> -->
 	<v-container grid-list-xs>
 		<v-layout column wrap>
-			{{values.image}}
 			<v-parallax height="300" :src="$store.state.assetRoot + values.image.path"></v-parallax>
-			<!-- {{$route.params.id}}
-			{{values}}-->
-			<!-- <v-img :src="$store.state.assetRoot + values.image.path"></v-img> -->
+
 			<h1>{{values.title}}</h1>
 			<h2>{{values.location.address}}</h2>
 			<Practices></Practices>
@@ -20,24 +17,7 @@ export default {
 		Practices: () => import("@/components/Practices")
 	},
 
-	fetch({ store, params, $axios }) {
-		let collection = "bupaPractices";
-		return $axios
-			.post(
-				store.state.webRoot +
-					"/api/collections/get/" +
-					collection +
-					"?token=" +
-					store.state.collectionsToken,
-				{
-					fields: { title: 1, slug: 1, image: 1 }
-				}
-			)
-			.then(res => {
-				store.commit("setNavigation", res.data);
-			});
-	},
-
+	//Get data for this page
 	asyncData({ params, store, $axios, route }) {
 		let collection = "bupaPractices";
 		return $axios
