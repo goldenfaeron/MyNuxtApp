@@ -53,7 +53,7 @@ export default {
   generate: {
     routes: function () {
 
-      return axios.post("http://cms.hackmylanguage.com/api/collections/get/blog?token=fc6c7faa21c0678f849f0d34e6f664",
+      return axios.post("https://cms.hackmylanguage.com/api/collections/get/blog?token=fc6c7faa21c0678f849f0d34e6f664",
         {
 
           fields: { slug: 1, _id: 0 }
