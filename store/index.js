@@ -21,8 +21,8 @@ export const state = () => ({
 
 
     //COLLECTION API TOKENS GO HERE 
-    assetRoot: "http://cms.hackmylanguage.com/storage/uploads",
-    webRoot: "http://cms.hackmylanguage.com",
+    assetRoot: "https://cms.hackmylanguage.com/storage/uploads",
+    webRoot: "https://cms.hackmylanguage.com",
     navigation: [],
     page: [],
 
