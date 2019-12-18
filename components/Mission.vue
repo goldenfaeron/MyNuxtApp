@@ -3,11 +3,12 @@
 		<v-container fluid>
 			<v-slide-y-transition>
 				<v-layout mx-5 my-5 row wrap v-show="show">
-					<v-flex v-for="(item, index) in values" :key="index" xs12 sm6 md4>
+					<v-flex v-for="(item, index) in props" :key="index" xs12 sm6 md4>
 						<div class="display-1 font-weight-thin">
-							<v-icon large color="secondary">{{item.icon}}</v-icon>
+							<v-icon large color="secondary">{{item.value.icon}}</v-icon>
 							<v-spacer></v-spacer>
-							{{item.text}}
+
+							{{item.value.text}}
 						</div>
 					</v-flex>
 				</v-layout>
@@ -20,6 +21,7 @@
 
 <script>
 export default {
+	props: ["props"],
 	data() {
 		return {
 			show: false,

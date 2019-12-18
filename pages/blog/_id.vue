@@ -1,25 +1,38 @@
 <template>
-	<!-- <div>{{values}}</div> -->
-	<v-container grid-list-xs>
-		<v-layout column wrap>
-			<v-parallax height="300" :src="$store.state.assetRoot + values.image.path"></v-parallax>
-
-			<h1>{{values.title}}</h1>
-			<h2>{{values.location.address}}</h2>
-			<Practices></Practices>
-		</v-layout>
-	</v-container>
+	<div>
+		<v-parallax max-height="300" :src="$store.state.assetRoot + values.image.path"></v-parallax>
+		<v-container>
+			<v-layout column>
+				<v-flex my-5 xs12>
+					<h1>{{values.title}}</h1>
+					<div v-html="values.content"></div>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs12>
+					<Gallery :props="values.gallery"></Gallery>
+				</v-flex>
+			</v-layout>
+		</v-container>
+	</div>
 </template>
 
 <script>
 export default {
+	props: ["props"]
+};
+</script>
+
+<script>
+export default {
 	components: {
-		Practices: () => import("@/components/Practices")
+		Practices: () => import("@/components/Practices"),
+		Gallery: () => import("@/components/Gallery")
 	},
 
 	//Get data for this page
 	asyncData({ params, store, $axios, route }) {
-		let collection = "bupaPractices";
+		let collection = "blog";
 		return $axios
 			.post(
 				store.state.webRoot +

@@ -8,8 +8,8 @@ export default {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - ' + 'Nomad Diaries',
+    title: 'process.env.npm_package_name' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -53,7 +53,7 @@ export default {
   generate: {
     routes: function () {
 
-      return axios.post("https://cockpit.hackmylanguage.com/api/collections/get/bupaPractices?token=ffcadb7b92232dd64da8cda5fa895d",
+      return axios.post("http://cms.hackmylanguage.com/api/collections/get/blog?token=fc6c7faa21c0678f849f0d34e6f664",
         {
 
           fields: { slug: 1, _id: 0 }
@@ -61,7 +61,7 @@ export default {
         .then((res) => {
           return res.data.entries.map((entry) => {
             return {
-              route: '/practices/' + entry.slug
+              route: '/blog/' + entry.slug
             }
 
           })
@@ -97,9 +97,9 @@ export default {
 
       themes: {
         light: {
-          primary: '#00325C',
+          primary: '#575551',
           accent: '#FFFFFF',
-          secondary: '#0179C9',
+          secondary: '#b5afa3',
           info: '#D8D6D8',
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

@@ -1,25 +1,28 @@
 import axios from "axios"
 export const state = () => ({
 
-    name: "Bupa Healthcare",
+    name: "Sam's Nomad Diaries",
 
     //TOKENS 
 
-    masterToken: 'd2e55cc7bc1ba0b4f7d66c43afb30a',
-    bupaPracticesToken: '5f75965a9da5820efd6b82f8c4293a',
+    masterToken: '2fb04e7093a4a4c60003a17180bf01',
+    // bupaPracticesToken: '5f75965a9da5820efd6b82f8c4293a',
 
     //All collections
-    collectionsToken: 'ffcadb7b92232dd64da8cda5fa895d',
+    collectionsToken: 'fc6c7faa21c0678f849f0d34e6f664',
+
+    //All singletons
+    singletonsToken: 'ec30521c5c674ea992fed2fa24cb3d',
 
     // For getting thumbnails
-    imageToken: 'e2556aa622d0a1d4a1c7d6f12ee36a',
+    imageToken: '77f3abfbb1ab1ecd0d339031fb209f',
 
 
 
 
     //COLLECTION API TOKENS GO HERE 
-    assetRoot: "https://cockpit.hackmylanguage.com/storage/uploads",
-    webRoot: "https://cockpit.hackmylanguage.com",
+    assetRoot: "http://cms.hackmylanguage.com/storage/uploads",
+    webRoot: "http://cms.hackmylanguage.com",
     navigation: [],
     page: [],
 
@@ -38,21 +41,21 @@ export const mutations = {
 
 export const actions = {
 
-    nuxtServerInit({ commit, state }) {
-        let collection = "bupaPractices";
-        // console.log("inited")
-        return axios.post(
+    // nuxtServerInit({ commit, state }) {
+    //     let collection = "bupaPractices";
+    //     // console.log("inited")
+    //     return axios.post(
 
-            state.webRoot + "/api/collections/get/" +
-            collection +
-            "?token=" + state.collectionsToken,
-            {
-                fields: { title: 1, slug: 1, image: 1 }
-            }
-        )
-            .then(res => {
-                commit("setNavigation", res.data);
-            });
-    }
+    //         state.webRoot + "/api/collections/get/" +
+    //         collection +
+    //         "?token=" + state.collectionsToken,
+    //         {
+    //             fields: { title: 1, slug: 1, image: 1 }
+    //         }
+    //     )
+    //         .then(res => {
+    //             commit("setNavigation", res.data);
+    //         });
+    // }
 
 }

@@ -1,5 +1,5 @@
 <template>
-	<v-img max-height="550" :src="image">
+	<v-img max-height="550" :src="$store.state.assetRoot + props.path">
 		<v-layout align-center justify-center fill-height>
 			<v-container>
 				<v-layout>
@@ -52,6 +52,7 @@
 
 <script>
 export default {
+	props: ["props"],
 	data() {
 		return {
 			image: require("@/assets/bupa/diagnosis.jpg"),

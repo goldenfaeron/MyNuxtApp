@@ -49,28 +49,12 @@
 
 		<v-content>
 			<!-- navigation -->
-			<v-toolbar dark color="accent">
-				<v-container grid-list-xs>
-					<v-layout row>
-						<v-flex xs2>
-							<LogoLink :props="{height:50, width:50}"></LogoLink>
-						</v-flex>
-						<v-flex xs10>
-							<v-layout row justify-center align-center>
-								<v-flex v-for="(item, i) in navigation" :key="i">
-									<nuxt-link :to="item.to">{{item.title}}</nuxt-link>
-								</v-flex>
-							</v-layout>
-						</v-flex>
-					</v-layout>
-				</v-container>
-			</v-toolbar>
 
 			<!-- Site Content -->
 			<nuxt />
 
 			<!-- Footer -->
-			<v-footer height="auto" color="primary" :fixed="fixed" app>
+			<v-footer height="auto" color="primary">
 				<v-layout justify-center row wrap>
 					<v-container>
 						<v-layout row wrap align-center justify-center>
@@ -129,29 +113,8 @@ export default {
 				},
 				{
 					icon: "mdi-chart-bubble",
-					title: "Health",
-					to: "/health"
-				},
-				{
-					icon: "mdi-book-open-page-variant",
-					title: "Dental",
-					to: "/dental"
-				},
-				{
-					icon: "mdi-apps",
-					title: "Care Homes",
-					to: "/care-homes"
-				},
-
-				{
-					icon: "mdi-image",
-					title: "Travel",
-					to: "/travel"
-				},
-				{
-					icon: "mdi-currency-usd",
-					title: "Health Information",
-					to: "/health-information"
+					title: "Blog",
+					to: "/blog"
 				}
 			],
 			miniVariant: false,
